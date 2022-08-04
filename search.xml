@@ -254,6 +254,76 @@
       </tags>
   </entry>
   <entry>
+    <title>常见函数——C语言</title>
+    <url>/blot.github.io/2022/03/03/102%E5%B8%B8%E8%A7%81%E8%BF%90%E7%94%A8%E5%87%BD%E6%95%B0/</url>
+    <content><![CDATA[<h1 id="常见函数"><a href="#常见函数" class="headerlink" title="常见函数"></a>常见函数</h1><h2 id="向上取整ceil-x"><a href="#向上取整ceil-x" class="headerlink" title="向上取整ceil(x)"></a>向上取整ceil(x)</h2><ul>
+<li>ceil(x)返回不小于x的最小整数值（然后转换为double型）。</li>
+<li>b=ceil(x);</li>
+<li>程序开头要加#include<math.h></li>
+</ul>
+<h2 id="向下取整floor-x"><a href="#向下取整floor-x" class="headerlink" title="向下取整floor(x)"></a>向下取整floor(x)</h2><ul>
+<li><p>floor(x)返回不大于x的最大整数值。</p>
+</li>
+<li><p>程序开头要加#include<math.h></p>
+</li>
+</ul>
+<h2 id="四舍五入round-x"><a href="#四舍五入round-x" class="headerlink" title="四舍五入round(x)"></a>四舍五入round(x)</h2><ul>
+<li><p>round(x)返回x的四舍五入整数值。</p>
+</li>
+<li><p>程序开头要加#include<math.h></p>
+</li>
+</ul>
+<h2 id="随机函数rand（）"><a href="#随机函数rand（）" class="headerlink" title="随机函数rand（）"></a>随机函数rand（）</h2><ul>
+<li>随机产生0到32767中一个数</li>
+<li>magic = rand();</li>
+<li>程序开头要加#include<stdlib.h></li>
+</ul>
+<p><strong>因为在程序数值一样产生数值一样，解决如下</strong></p>
+<p>2.改用时间作为随机数种子更好<strong>（常用）</strong></p>
+<ul>
+<li>用函数time()获得系统时间</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;time.h&gt;</span></span></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="type">int</span> i;</span><br><span class="line">	srand(time(<span class="literal">NULL</span>));<span class="comment">//用NULL作为函数参数，使其仅能从返回值取得系统时间</span></span><br><span class="line">	<span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; <span class="number">4</span>; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>,rand() );</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>2.因为在程序数值一样，要为rang()设置随机数种子，使产生的随机数“随机化”</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="type">int</span> i;</span><br><span class="line">	<span class="type">unsigned</span> <span class="type">int</span> seed;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;Please enter seed:\n&quot;</span>);</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">&quot;%u&quot;</span>,&amp;seed);</span><br><span class="line">	srand(seed);<span class="comment">//设置随机数种子</span></span><br><span class="line">	<span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; <span class="number">4</span>; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>,rand()%<span class="number">100</span>+<span class="number">1</span> );</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="函数srand"><a href="#函数srand" class="headerlink" title="函数srand()"></a>函数srand()</h4><p>用来设置rand()产生随机数时的随机数种子，参数seed必须是整数，通常可以用time(0)的返回值作为seed.如果每次seed都设置相同的值，rand()产生的随机数值每次都一样。</p>
+<h1 id="见数学计算"><a href="#见数学计算" class="headerlink" title="见数学计算"></a>见数学计算</h1><p><img src="https://wjlpicture.oss-cn-beijing.aliyuncs.com/img/202201041244242.png" alt="image-20210805223345470"></p>
+<p>程序开头要加#include<math.h></p>
+<h1 id="语句"><a href="#语句" class="headerlink" title="语句"></a>语句</h1><h2 id="退出循环语句函数"><a href="#退出循环语句函数" class="headerlink" title="退出循环语句函数"></a>退出循环语句函数</h2><h3 id="goto语句"><a href="#goto语句" class="headerlink" title="goto语句"></a>goto语句</h3><ol>
+<li>无条件转向语句</li>
+<li>跳出多重循环</li>
+<li>跳出共同的出口位置</li>
+<li>不要使用过多的gotu语句标标号</li>
+<li>题目：韩信点兵求至少多少兵</li>
+</ol>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="type">int</span> x;</span><br><span class="line">	<span class="keyword">for</span>(x=<span class="number">1</span>;;x++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span>(x%<span class="number">5</span>==<span class="number">1</span> &amp;&amp; x%<span class="number">6</span>==<span class="number">5</span> &amp;&amp; x%<span class="number">7</span>==<span class="number">4</span> &amp;&amp; x%<span class="number">11</span>==<span class="number">10</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">&quot;x=%d\n&quot;</span>,x );</span><br><span class="line">			<span class="keyword">goto</span> END;<span class="comment">//无条件转向语句</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	END: ;<span class="comment">//标识（标识符）后面必须有语句，哪怕是空语句</span></span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="break语句"><a href="#break语句" class="headerlink" title="break语句"></a>break语句</h3><ul>
+<li>可用于跳出循环语句</li>
+<li>跳出到紧接循环语句后的第一条语句</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="type">int</span> x;</span><br><span class="line">	<span class="keyword">for</span>(x=<span class="number">1</span>;;x++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span>(x%<span class="number">5</span>==<span class="number">1</span> &amp;&amp; x%<span class="number">6</span>==<span class="number">5</span> &amp;&amp; x%<span class="number">7</span>==<span class="number">4</span> &amp;&amp; x%<span class="number">11</span>==<span class="number">10</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">&quot;x=%d\n&quot;</span>,x );</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="exit（）函数"><a href="#exit（）函数" class="headerlink" title="exit（）函数"></a>exit（）函数</h3><ul>
+<li><p>开头加入#include<stdlib.h></p>
+</li>
+<li><p>终止整个程序运行，参数为0时，表程序正常退出；非0时表示非正常退出</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="type">int</span> x;</span><br><span class="line">	<span class="keyword">for</span>(x=<span class="number">1</span>;;x++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span>(x%<span class="number">5</span>==<span class="number">1</span> &amp;&amp; x%<span class="number">6</span>==<span class="number">5</span> &amp;&amp; x%<span class="number">7</span>==<span class="number">4</span> &amp;&amp; x%<span class="number">11</span>==<span class="number">10</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">&quot;x=%d\n&quot;</span>,x );</span><br><span class="line">			<span class="built_in">exit</span>(<span class="number">0</span>);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="continue语句"><a href="#continue语句" class="headerlink" title="continue语句"></a>continue语句</h2><ul>
+<li>继续循环这个语句</li>
+<li>但是他要跳过continue后面的语句才执行循环，直到循环截止</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="type">int</span> i,n;</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">1</span>;i&lt;<span class="number">5</span>;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;Please enter n:\n&quot;</span>);</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;n);</span><br><span class="line">		<span class="keyword">if</span>(n&lt;<span class="number">0</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">continue</span>;<span class="comment">//满足条件继续循环，换成break可对比</span></span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">&quot;n=%d\n&quot;</span>,n );</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;Program is over!\n&quot;</span>);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a>冒泡排序</h2><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="type">int</span> <span class="title function_">Bullosort</span><span class="params">(<span class="type">int</span> a[],<span class="type">int</span> n)</span>;</span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span> </span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span> b[<span class="number">5</span>]=&#123;<span class="number">5</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">2</span>,<span class="number">1</span>&#125;;</span><br><span class="line">    Bullosort(b,<span class="number">5</span>);</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;<span class="number">5</span>;i++)&#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>,b[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="type">int</span> <span class="title function_">Bullosort</span><span class="params">(<span class="type">int</span> a[],<span class="type">int</span> n)</span>&#123;</span><br><span class="line">    <span class="type">int</span> temp;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;n;i++)&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> j=i+<span class="number">1</span>;j&lt;n;j++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(a[i]&gt;a[j])&#123;</span><br><span class="line">                temp=a[i];</span><br><span class="line">                a[i]=a[j];</span><br><span class="line">                a[j]=temp;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>C语言</category>
+      </categories>
+      <tags>
+        <tag>c语言</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>1.数据类型——C语言</title>
     <url>/blot.github.io/2022/03/03/1%E3%80%81%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/</url>
     <content><![CDATA[<h1 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h1><h2 id="变量定义（菜鸟教程）"><a href="#变量定义（菜鸟教程）" class="headerlink" title="变量定义（菜鸟教程）"></a>变量定义（<a href="https://www.runoob.com/cprogramming/c-tutorial.html">菜鸟教程</a>）</h2><h3 id="基本组成要素"><a href="#基本组成要素" class="headerlink" title="基本组成要素"></a>基本组成要素</h3><div class="table-container">
@@ -540,76 +610,6 @@
       </tags>
   </entry>
   <entry>
-    <title>常见函数——C语言</title>
-    <url>/blot.github.io/2022/03/03/102%E5%B8%B8%E8%A7%81%E8%BF%90%E7%94%A8%E5%87%BD%E6%95%B0/</url>
-    <content><![CDATA[<h1 id="常见函数"><a href="#常见函数" class="headerlink" title="常见函数"></a>常见函数</h1><h2 id="向上取整ceil-x"><a href="#向上取整ceil-x" class="headerlink" title="向上取整ceil(x)"></a>向上取整ceil(x)</h2><ul>
-<li>ceil(x)返回不小于x的最小整数值（然后转换为double型）。</li>
-<li>b=ceil(x);</li>
-<li>程序开头要加#include<math.h></li>
-</ul>
-<h2 id="向下取整floor-x"><a href="#向下取整floor-x" class="headerlink" title="向下取整floor(x)"></a>向下取整floor(x)</h2><ul>
-<li><p>floor(x)返回不大于x的最大整数值。</p>
-</li>
-<li><p>程序开头要加#include<math.h></p>
-</li>
-</ul>
-<h2 id="四舍五入round-x"><a href="#四舍五入round-x" class="headerlink" title="四舍五入round(x)"></a>四舍五入round(x)</h2><ul>
-<li><p>round(x)返回x的四舍五入整数值。</p>
-</li>
-<li><p>程序开头要加#include<math.h></p>
-</li>
-</ul>
-<h2 id="随机函数rand（）"><a href="#随机函数rand（）" class="headerlink" title="随机函数rand（）"></a>随机函数rand（）</h2><ul>
-<li>随机产生0到32767中一个数</li>
-<li>magic = rand();</li>
-<li>程序开头要加#include<stdlib.h></li>
-</ul>
-<p><strong>因为在程序数值一样产生数值一样，解决如下</strong></p>
-<p>2.改用时间作为随机数种子更好<strong>（常用）</strong></p>
-<ul>
-<li>用函数time()获得系统时间</li>
-</ul>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;time.h&gt;</span></span></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="type">int</span> i;</span><br><span class="line">	srand(time(<span class="literal">NULL</span>));<span class="comment">//用NULL作为函数参数，使其仅能从返回值取得系统时间</span></span><br><span class="line">	<span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; <span class="number">4</span>; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>,rand() );</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>2.因为在程序数值一样，要为rang()设置随机数种子，使产生的随机数“随机化”</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="type">int</span> i;</span><br><span class="line">	<span class="type">unsigned</span> <span class="type">int</span> seed;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;Please enter seed:\n&quot;</span>);</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">&quot;%u&quot;</span>,&amp;seed);</span><br><span class="line">	srand(seed);<span class="comment">//设置随机数种子</span></span><br><span class="line">	<span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; <span class="number">4</span>; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>,rand()%<span class="number">100</span>+<span class="number">1</span> );</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="函数srand"><a href="#函数srand" class="headerlink" title="函数srand()"></a>函数srand()</h4><p>用来设置rand()产生随机数时的随机数种子，参数seed必须是整数，通常可以用time(0)的返回值作为seed.如果每次seed都设置相同的值，rand()产生的随机数值每次都一样。</p>
-<h1 id="见数学计算"><a href="#见数学计算" class="headerlink" title="见数学计算"></a>见数学计算</h1><p><img src="https://wjlpicture.oss-cn-beijing.aliyuncs.com/img/202201041244242.png" alt="image-20210805223345470"></p>
-<p>程序开头要加#include<math.h></p>
-<h1 id="语句"><a href="#语句" class="headerlink" title="语句"></a>语句</h1><h2 id="退出循环语句函数"><a href="#退出循环语句函数" class="headerlink" title="退出循环语句函数"></a>退出循环语句函数</h2><h3 id="goto语句"><a href="#goto语句" class="headerlink" title="goto语句"></a>goto语句</h3><ol>
-<li>无条件转向语句</li>
-<li>跳出多重循环</li>
-<li>跳出共同的出口位置</li>
-<li>不要使用过多的gotu语句标标号</li>
-<li>题目：韩信点兵求至少多少兵</li>
-</ol>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="type">int</span> x;</span><br><span class="line">	<span class="keyword">for</span>(x=<span class="number">1</span>;;x++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span>(x%<span class="number">5</span>==<span class="number">1</span> &amp;&amp; x%<span class="number">6</span>==<span class="number">5</span> &amp;&amp; x%<span class="number">7</span>==<span class="number">4</span> &amp;&amp; x%<span class="number">11</span>==<span class="number">10</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">&quot;x=%d\n&quot;</span>,x );</span><br><span class="line">			<span class="keyword">goto</span> END;<span class="comment">//无条件转向语句</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	END: ;<span class="comment">//标识（标识符）后面必须有语句，哪怕是空语句</span></span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="break语句"><a href="#break语句" class="headerlink" title="break语句"></a>break语句</h3><ul>
-<li>可用于跳出循环语句</li>
-<li>跳出到紧接循环语句后的第一条语句</li>
-</ul>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="type">int</span> x;</span><br><span class="line">	<span class="keyword">for</span>(x=<span class="number">1</span>;;x++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span>(x%<span class="number">5</span>==<span class="number">1</span> &amp;&amp; x%<span class="number">6</span>==<span class="number">5</span> &amp;&amp; x%<span class="number">7</span>==<span class="number">4</span> &amp;&amp; x%<span class="number">11</span>==<span class="number">10</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">&quot;x=%d\n&quot;</span>,x );</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="exit（）函数"><a href="#exit（）函数" class="headerlink" title="exit（）函数"></a>exit（）函数</h3><ul>
-<li><p>开头加入#include<stdlib.h></p>
-</li>
-<li><p>终止整个程序运行，参数为0时，表程序正常退出；非0时表示非正常退出</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="type">int</span> x;</span><br><span class="line">	<span class="keyword">for</span>(x=<span class="number">1</span>;;x++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span>(x%<span class="number">5</span>==<span class="number">1</span> &amp;&amp; x%<span class="number">6</span>==<span class="number">5</span> &amp;&amp; x%<span class="number">7</span>==<span class="number">4</span> &amp;&amp; x%<span class="number">11</span>==<span class="number">10</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">&quot;x=%d\n&quot;</span>,x );</span><br><span class="line">			<span class="built_in">exit</span>(<span class="number">0</span>);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h2 id="continue语句"><a href="#continue语句" class="headerlink" title="continue语句"></a>continue语句</h2><ul>
-<li>继续循环这个语句</li>
-<li>但是他要跳过continue后面的语句才执行循环，直到循环截止</li>
-</ul>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="type">int</span> i,n;</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">1</span>;i&lt;<span class="number">5</span>;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;Please enter n:\n&quot;</span>);</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;n);</span><br><span class="line">		<span class="keyword">if</span>(n&lt;<span class="number">0</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">continue</span>;<span class="comment">//满足条件继续循环，换成break可对比</span></span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">&quot;n=%d\n&quot;</span>,n );</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;Program is over!\n&quot;</span>);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a>冒泡排序</h2><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="type">int</span> <span class="title function_">Bullosort</span><span class="params">(<span class="type">int</span> a[],<span class="type">int</span> n)</span>;</span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span> </span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span> b[<span class="number">5</span>]=&#123;<span class="number">5</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">2</span>,<span class="number">1</span>&#125;;</span><br><span class="line">    Bullosort(b,<span class="number">5</span>);</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;<span class="number">5</span>;i++)&#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>,b[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="type">int</span> <span class="title function_">Bullosort</span><span class="params">(<span class="type">int</span> a[],<span class="type">int</span> n)</span>&#123;</span><br><span class="line">    <span class="type">int</span> temp;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;n;i++)&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> j=i+<span class="number">1</span>;j&lt;n;j++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(a[i]&gt;a[j])&#123;</span><br><span class="line">                temp=a[i];</span><br><span class="line">                a[i]=a[j];</span><br><span class="line">                a[j]=temp;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>C语言</category>
-      </categories>
-      <tags>
-        <tag>c语言</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>2.python基础进阶</title>
     <url>/blot.github.io/2022/04/03/2%E3%80%81%E5%9F%BA%E7%A1%80%E8%BF%9B%E9%98%B6/</url>
     <content><![CDATA[<h1 id="2、基础进阶"><a href="#2、基础进阶" class="headerlink" title="2、基础进阶"></a>2、基础进阶</h1><h1 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h1><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">列表名=[数据<span class="number">1</span>，数据<span class="number">2</span>,..,数据n]</span><br></pre></td></tr></table></figure>
@@ -782,6 +782,175 @@
 <li>类型（表达式）</li>
 </ul>
 <figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="type">int</span> total,number;</span><br><span class="line">	<span class="type">float</span> aver1,aver2;</span><br><span class="line">	total = <span class="number">15</span>;</span><br><span class="line">	number = <span class="number">2</span>;</span><br><span class="line">	aver1 = total/number;<span class="comment">//无强制性转换</span></span><br><span class="line">	aver2 = (<span class="type">float</span>)total/number;<span class="comment">//强制性转化</span></span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;aver1=%f\n&quot;</span>,aver1);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;aver2=%f\n&quot;</span>,aver2);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>C语言</category>
+      </categories>
+      <tags>
+        <tag>c语言</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>3.输入与输出——C语言</title>
+    <url>/blot.github.io/2022/03/03/3%E3%80%81%E8%BE%93%E5%85%A5%E4%B8%8E%E8%BE%93%E5%87%BA/</url>
+    <content><![CDATA[<h1 id="输入与输出"><a href="#输入与输出" class="headerlink" title="输入与输出"></a>输入与输出</h1><h2 id="屏幕输出printf（）"><a href="#屏幕输出printf（）" class="headerlink" title="屏幕输出printf（）"></a>屏幕输出printf（）</h2><h3 id="输出字符"><a href="#输出字符" class="headerlink" title="输出字符"></a>输出字符</h3><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>%d</th>
+<th>输出十进制有符号int型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>%u</td>
+<td>输出十进制无符号int型</td>
+</tr>
+<tr>
+<td>%f</td>
+<td>以小数形式(6位小数)输出float , double型以标准指数形式输出float , double型</td>
+</tr>
+<tr>
+<td>%e</td>
+<td>以标准指数形式输出float , double型</td>
+</tr>
+<tr>
+<td>%c</td>
+<td>以字符形式输出单个字符</td>
+</tr>
+<tr>
+<td>l</td>
+<td>加d、u前输出long型</td>
+</tr>
+<tr>
+<td>h</td>
+<td>加d、u前输出short型</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h5 id="long-long-的输入和输出"><a href="#long-long-的输入和输出" class="headerlink" title="long long 的输入和输出"></a>long long 的输入和输出</h5><ul>
+<li><p>输入：scanf(“%Ild”,&amp;a)；</p>
+</li>
+<li><p>输出：printf(“%Ild”,a)；</p>
+</li>
+</ul>
+<p>或者还有一版本</p>
+<ul>
+<li>输入：scanf(“%I64d”,&amp;a)；</li>
+<li>输出：printf(“%I64d”,a)；</li>
+<li><strong>注意I为大写的i</strong></li>
+</ul>
+<h3 id="printf-的格式修饰符"><a href="#printf-的格式修饰符" class="headerlink" title="printf()的格式修饰符"></a>printf()的格式修饰符</h3><h4 id="m-输出数据最小域宽"><a href="#m-输出数据最小域宽" class="headerlink" title="m:输出数据最小域宽"></a>m:输出数据最小域宽</h4><ul>
+<li>数据位宽大于m时，按实际位宽输出</li>
+<li>小于m时，右对齐，左补空格</li>
+<li>-m:左对齐，右补空格</li>
+</ul>
+<h4 id="显示精度-n"><a href="#显示精度-n" class="headerlink" title="显示精度.n:"></a>显示精度.n:</h4><ul>
+<li>对浮点数表示输出n位小数</li>
+<li>格式：%.nf</li>
+</ul>
+<p>其他</p>
+<ul>
+<li><p>一般格式：%m.nf</p>
+</li>
+<li><p>屏幕输出%</p>
+</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="type">float</span> a;</span><br><span class="line">	<span class="type">int</span> b=<span class="number">2</span>;</span><br><span class="line">	a=<span class="number">7.4848</span>;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;%10.2f\n&quot;</span>,a );</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;%d%%\n&quot;</span>,b);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="键盘输入scanf"><a href="#键盘输入scanf" class="headerlink" title="键盘输入scanf()"></a>键盘输入scanf()</h2><h3 id="格式"><a href="#格式" class="headerlink" title="格式"></a>格式</h3><ul>
+<li>scanf(“%d%f”,&amp;a,&amp;b);</li>
+</ul>
+<p>分隔多个输入数据</p>
+<ol>
+<li>空格、Tab或回车</li>
+<li>达到输入位宽</li>
+<li>遇到非法字符</li>
+</ol>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line">c = <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;a);<span class="comment">//输入格式正确，返回数值1;遇到非法数字则是返回0</span></span><br><span class="line">c = <span class="built_in">scanf</span>(<span class="string">&quot;%d%d&quot;</span>,&amp;a,b);<span class="comment">//scanf的返回值是参数被成功赋值的个数；也可作为输入非法数值判断</span></span><br></pre></td></tr></table></figure>
+<h3 id="scanf-的格式字符"><a href="#scanf-的格式字符" class="headerlink" title="scanf()的格式字符"></a>scanf()的格式字符</h3><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>%d</th>
+<th>输入十进制int型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>%f,%e</td>
+<td>输入float型（不能指定输入数据精度）</td>
+</tr>
+<tr>
+<td>%c</td>
+<td>输入一个字符（包括空白字符）</td>
+</tr>
+<tr>
+<td>m</td>
+<td>输入数据位宽</td>
+</tr>
+<tr>
+<td>l</td>
+<td>加d,u前输入long型；加f,e前输入double型</td>
+</tr>
+<tr>
+<td>L</td>
+<td>加f,e前输入long double型</td>
+</tr>
+<tr>
+<td>h</td>
+<td>加d前输入short型</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="单个字符输入输出"><a href="#单个字符输入输出" class="headerlink" title="单个字符输入输出"></a>单个字符输入输出</h2><p>字符常量</p>
+<ul>
+<li>用单引号括起来的一个字符：  ‘98’</li>
+</ul>
+<h4 id="转义字符"><a href="#转义字符" class="headerlink" title="转义字符"></a>转义字符</h4><p><img src="https://wjlpicture.oss-cn-beijing.aliyuncs.com/img/202201041242590.png" alt="image-20210803185142670"></p>
+<h4 id="ACSII码值"><a href="#ACSII码值" class="headerlink" title="ACSII码值"></a><a href="http://c.biancheng.net/c/ascii/">ACSII码值</a></h4><ul>
+<li><p>字符在内存存储：对应的ASCII码的二进制值</p>
+</li>
+<li><p>不管是字符、数字、还是非法数值都有对应的ASCII码值，可以通过ASCII码值来判断是哪种类型</p>
+</li>
+</ul>
+<h3 id="字符型变量"><a href="#字符型变量" class="headerlink" title="字符型变量"></a>字符型变量</h3><ol>
+<li>定义：char ch = ‘B’</li>
+<li>字符型变量的值</li>
+</ol>
+<ul>
+<li>ASCII码值可做算数运算<ol>
+<li>字母小写的ASCII码值总比大写ASCII大32</li>
+</ol>
+</li>
+</ul>
+<h3 id="单个字符输入输出-1"><a href="#单个字符输入输出-1" class="headerlink" title="单个字符输入输出"></a>单个字符输入输出</h3><h4 id="输出函数putchar"><a href="#输出函数putchar" class="headerlink" title="输出函数putchar()"></a>输出函数putchar()</h4><ul>
+<li>putchar(ch)</li>
+<li>向屏幕输出一个字符—（类似printf）</li>
+</ul>
+<h4 id="输入函数getchar（）"><a href="#输入函数getchar（）" class="headerlink" title="输入函数getchar（）"></a>输入函数getchar（）</h4><ul>
+<li>ch = getchar()</li>
+<li>键盘输入字符</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="type">char</span> ch;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;请输入字符\n&quot;</span>);</span><br><span class="line">	ch = getchar();</span><br><span class="line">	ch = ch+<span class="number">32</span>;</span><br><span class="line">	<span class="built_in">putchar</span>(ch);</span><br><span class="line">	<span class="built_in">putchar</span>(<span class="string">&#x27;\n&#x27;</span>);<span class="comment">//执行结果是将光标执行到下一行的起始位置处</span></span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;作为判断\n&quot;</span>);<span class="comment">//可删去上一行代码作为判断</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>也可以用printf()输出 </li>
+<li>字符型变量可以%c和%d两种格式输出</li>
+</ul>
+<h2 id="getchar-存在的问题"><a href="#getchar-存在的问题" class="headerlink" title="getchar()存在的问题"></a>getchar()存在的问题</h2><ul>
+<li>输入字符时，将所有的用户输入，包括回车符号，都放在输入缓冲区中</li>
+<li>当一行输入结束后，getchar才开始从输入缓冲队列中读取字符，而在函数没有读走的数据，留在缓冲区被下个getchar()函数读取</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="type">char</span> ch1,ch2;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;请输入字符\n&quot;</span>);</span><br><span class="line">	ch1 = getchar();</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;ch1=%c\n&quot;</span>,ch1 );</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;请再次输入字符\n&quot;</span>);</span><br><span class="line">	ch2 = getchar();</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;ch2=%d\n&quot;</span>,ch2 );<span class="comment">//%d输出的是10，对应的换行符的ASCII码值</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="用-c格式输入存在的问题"><a href="#用-c格式输入存在的问题" class="headerlink" title="用%c格式输入存在的问题"></a>用%c格式输入存在的问题</h3><ul>
+<li>用%c格式读入字符时，空格和回车等空白字符都会被当作有效字符读入</li>
+</ul>
+<h4 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h4><ul>
+<li>第一种:用gerchar调用语句将用户输入的回车字符读走</li>
+<li>第二种：在%c前加一个空格忽略缓冲区的空白字符</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span> a;</span><br><span class="line">    <span class="type">char</span> b;</span><br><span class="line">    <span class="type">float</span> c;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;输入整数\n&quot;</span>);</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;a);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;整数是%d\n&quot;</span>,a);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;输入字符\n&quot;</span>);</span><br><span class="line">    getchar();<span class="comment">//用gerchar调用语句将用户输入的回车字符读走</span></span><br><span class="line">    <span class="comment">//scanf(&quot; %c&quot;,&amp;b);//在%c前加一个空格忽略缓冲区的空白字符</span></span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%c&quot;</span>,&amp;b);<span class="comment">//上一行代码运行时记得注销</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;字符是%c\n&quot;</span>,b);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;输入小数\n&quot;</span>);</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%f&quot;</span>,&amp;c);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;小数是%f\n&quot;</span>,c);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>C语言</category>
@@ -1104,175 +1273,6 @@
       </categories>
       <tags>
         <tag>python基础</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>3.输入与输出——C语言</title>
-    <url>/blot.github.io/2022/03/03/3%E3%80%81%E8%BE%93%E5%85%A5%E4%B8%8E%E8%BE%93%E5%87%BA/</url>
-    <content><![CDATA[<h1 id="输入与输出"><a href="#输入与输出" class="headerlink" title="输入与输出"></a>输入与输出</h1><h2 id="屏幕输出printf（）"><a href="#屏幕输出printf（）" class="headerlink" title="屏幕输出printf（）"></a>屏幕输出printf（）</h2><h3 id="输出字符"><a href="#输出字符" class="headerlink" title="输出字符"></a>输出字符</h3><div class="table-container">
-<table>
-<thead>
-<tr>
-<th>%d</th>
-<th>输出十进制有符号int型</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>%u</td>
-<td>输出十进制无符号int型</td>
-</tr>
-<tr>
-<td>%f</td>
-<td>以小数形式(6位小数)输出float , double型以标准指数形式输出float , double型</td>
-</tr>
-<tr>
-<td>%e</td>
-<td>以标准指数形式输出float , double型</td>
-</tr>
-<tr>
-<td>%c</td>
-<td>以字符形式输出单个字符</td>
-</tr>
-<tr>
-<td>l</td>
-<td>加d、u前输出long型</td>
-</tr>
-<tr>
-<td>h</td>
-<td>加d、u前输出short型</td>
-</tr>
-</tbody>
-</table>
-</div>
-<h5 id="long-long-的输入和输出"><a href="#long-long-的输入和输出" class="headerlink" title="long long 的输入和输出"></a>long long 的输入和输出</h5><ul>
-<li><p>输入：scanf(“%Ild”,&amp;a)；</p>
-</li>
-<li><p>输出：printf(“%Ild”,a)；</p>
-</li>
-</ul>
-<p>或者还有一版本</p>
-<ul>
-<li>输入：scanf(“%I64d”,&amp;a)；</li>
-<li>输出：printf(“%I64d”,a)；</li>
-<li><strong>注意I为大写的i</strong></li>
-</ul>
-<h3 id="printf-的格式修饰符"><a href="#printf-的格式修饰符" class="headerlink" title="printf()的格式修饰符"></a>printf()的格式修饰符</h3><h4 id="m-输出数据最小域宽"><a href="#m-输出数据最小域宽" class="headerlink" title="m:输出数据最小域宽"></a>m:输出数据最小域宽</h4><ul>
-<li>数据位宽大于m时，按实际位宽输出</li>
-<li>小于m时，右对齐，左补空格</li>
-<li>-m:左对齐，右补空格</li>
-</ul>
-<h4 id="显示精度-n"><a href="#显示精度-n" class="headerlink" title="显示精度.n:"></a>显示精度.n:</h4><ul>
-<li>对浮点数表示输出n位小数</li>
-<li>格式：%.nf</li>
-</ul>
-<p>其他</p>
-<ul>
-<li><p>一般格式：%m.nf</p>
-</li>
-<li><p>屏幕输出%</p>
-</li>
-</ul>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="type">float</span> a;</span><br><span class="line">	<span class="type">int</span> b=<span class="number">2</span>;</span><br><span class="line">	a=<span class="number">7.4848</span>;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;%10.2f\n&quot;</span>,a );</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;%d%%\n&quot;</span>,b);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="键盘输入scanf"><a href="#键盘输入scanf" class="headerlink" title="键盘输入scanf()"></a>键盘输入scanf()</h2><h3 id="格式"><a href="#格式" class="headerlink" title="格式"></a>格式</h3><ul>
-<li>scanf(“%d%f”,&amp;a,&amp;b);</li>
-</ul>
-<p>分隔多个输入数据</p>
-<ol>
-<li>空格、Tab或回车</li>
-<li>达到输入位宽</li>
-<li>遇到非法字符</li>
-</ol>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line">c = <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;a);<span class="comment">//输入格式正确，返回数值1;遇到非法数字则是返回0</span></span><br><span class="line">c = <span class="built_in">scanf</span>(<span class="string">&quot;%d%d&quot;</span>,&amp;a,b);<span class="comment">//scanf的返回值是参数被成功赋值的个数；也可作为输入非法数值判断</span></span><br></pre></td></tr></table></figure>
-<h3 id="scanf-的格式字符"><a href="#scanf-的格式字符" class="headerlink" title="scanf()的格式字符"></a>scanf()的格式字符</h3><div class="table-container">
-<table>
-<thead>
-<tr>
-<th>%d</th>
-<th>输入十进制int型</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>%f,%e</td>
-<td>输入float型（不能指定输入数据精度）</td>
-</tr>
-<tr>
-<td>%c</td>
-<td>输入一个字符（包括空白字符）</td>
-</tr>
-<tr>
-<td>m</td>
-<td>输入数据位宽</td>
-</tr>
-<tr>
-<td>l</td>
-<td>加d,u前输入long型；加f,e前输入double型</td>
-</tr>
-<tr>
-<td>L</td>
-<td>加f,e前输入long double型</td>
-</tr>
-<tr>
-<td>h</td>
-<td>加d前输入short型</td>
-</tr>
-</tbody>
-</table>
-</div>
-<h2 id="单个字符输入输出"><a href="#单个字符输入输出" class="headerlink" title="单个字符输入输出"></a>单个字符输入输出</h2><p>字符常量</p>
-<ul>
-<li>用单引号括起来的一个字符：  ‘98’</li>
-</ul>
-<h4 id="转义字符"><a href="#转义字符" class="headerlink" title="转义字符"></a>转义字符</h4><p><img src="https://wjlpicture.oss-cn-beijing.aliyuncs.com/img/202201041242590.png" alt="image-20210803185142670"></p>
-<h4 id="ACSII码值"><a href="#ACSII码值" class="headerlink" title="ACSII码值"></a><a href="http://c.biancheng.net/c/ascii/">ACSII码值</a></h4><ul>
-<li><p>字符在内存存储：对应的ASCII码的二进制值</p>
-</li>
-<li><p>不管是字符、数字、还是非法数值都有对应的ASCII码值，可以通过ASCII码值来判断是哪种类型</p>
-</li>
-</ul>
-<h3 id="字符型变量"><a href="#字符型变量" class="headerlink" title="字符型变量"></a>字符型变量</h3><ol>
-<li>定义：char ch = ‘B’</li>
-<li>字符型变量的值</li>
-</ol>
-<ul>
-<li>ASCII码值可做算数运算<ol>
-<li>字母小写的ASCII码值总比大写ASCII大32</li>
-</ol>
-</li>
-</ul>
-<h3 id="单个字符输入输出-1"><a href="#单个字符输入输出-1" class="headerlink" title="单个字符输入输出"></a>单个字符输入输出</h3><h4 id="输出函数putchar"><a href="#输出函数putchar" class="headerlink" title="输出函数putchar()"></a>输出函数putchar()</h4><ul>
-<li>putchar(ch)</li>
-<li>向屏幕输出一个字符—（类似printf）</li>
-</ul>
-<h4 id="输入函数getchar（）"><a href="#输入函数getchar（）" class="headerlink" title="输入函数getchar（）"></a>输入函数getchar（）</h4><ul>
-<li>ch = getchar()</li>
-<li>键盘输入字符</li>
-</ul>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="type">char</span> ch;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;请输入字符\n&quot;</span>);</span><br><span class="line">	ch = getchar();</span><br><span class="line">	ch = ch+<span class="number">32</span>;</span><br><span class="line">	<span class="built_in">putchar</span>(ch);</span><br><span class="line">	<span class="built_in">putchar</span>(<span class="string">&#x27;\n&#x27;</span>);<span class="comment">//执行结果是将光标执行到下一行的起始位置处</span></span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;作为判断\n&quot;</span>);<span class="comment">//可删去上一行代码作为判断</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>也可以用printf()输出 </li>
-<li>字符型变量可以%c和%d两种格式输出</li>
-</ul>
-<h2 id="getchar-存在的问题"><a href="#getchar-存在的问题" class="headerlink" title="getchar()存在的问题"></a>getchar()存在的问题</h2><ul>
-<li>输入字符时，将所有的用户输入，包括回车符号，都放在输入缓冲区中</li>
-<li>当一行输入结束后，getchar才开始从输入缓冲队列中读取字符，而在函数没有读走的数据，留在缓冲区被下个getchar()函数读取</li>
-</ul>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="type">char</span> ch1,ch2;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;请输入字符\n&quot;</span>);</span><br><span class="line">	ch1 = getchar();</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;ch1=%c\n&quot;</span>,ch1 );</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;请再次输入字符\n&quot;</span>);</span><br><span class="line">	ch2 = getchar();</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;ch2=%d\n&quot;</span>,ch2 );<span class="comment">//%d输出的是10，对应的换行符的ASCII码值</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="用-c格式输入存在的问题"><a href="#用-c格式输入存在的问题" class="headerlink" title="用%c格式输入存在的问题"></a>用%c格式输入存在的问题</h3><ul>
-<li>用%c格式读入字符时，空格和回车等空白字符都会被当作有效字符读入</li>
-</ul>
-<h4 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h4><ul>
-<li>第一种:用gerchar调用语句将用户输入的回车字符读走</li>
-<li>第二种：在%c前加一个空格忽略缓冲区的空白字符</li>
-</ul>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span> a;</span><br><span class="line">    <span class="type">char</span> b;</span><br><span class="line">    <span class="type">float</span> c;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;输入整数\n&quot;</span>);</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;a);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;整数是%d\n&quot;</span>,a);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;输入字符\n&quot;</span>);</span><br><span class="line">    getchar();<span class="comment">//用gerchar调用语句将用户输入的回车字符读走</span></span><br><span class="line">    <span class="comment">//scanf(&quot; %c&quot;,&amp;b);//在%c前加一个空格忽略缓冲区的空白字符</span></span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%c&quot;</span>,&amp;b);<span class="comment">//上一行代码运行时记得注销</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;字符是%c\n&quot;</span>,b);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;输入小数\n&quot;</span>);</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%f&quot;</span>,&amp;c);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;小数是%f\n&quot;</span>,c);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>C语言</category>
-      </categories>
-      <tags>
-        <tag>c语言</tag>
       </tags>
   </entry>
   <entry>
@@ -3709,7 +3709,7 @@ else
 <ul>
 <li>在排序对比时，遇到相同位置的数字，不发生交换，就比较稳定；可能发生交换不稳定</li>
 </ul>
-<p><img src="https://wjlpicture.oss-cn-beijing.aliyuncs.com/img/202205162334188.gif" style="zoom:200%;" /></p>
+<p><img src="https://wjlpicture.oss-cn-beijing.aliyuncs.com/img/202208041252148.gif" style="zoom:200%;" /></p>
 <figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">merge_sort</span><span class="params">(<span class="type">int</span> q[], <span class="type">int</span> l, <span class="type">int</span> r)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (l &gt;= r) <span class="keyword">return</span>;<span class="comment">//回归条件</span></span><br><span class="line">    <span class="type">int</span> mid = l + r &gt;&gt; <span class="number">1</span>;<span class="comment">//取中间值，</span></span><br><span class="line">    <span class="built_in">merge_sort</span>(q, l, mid);<span class="comment">//左端递归排序</span></span><br><span class="line">    <span class="built_in">merge_sort</span>(q, mid + <span class="number">1</span>, r);<span class="comment">//右端递归排序</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">//归并合一，两个有序序列合成一个有序序列</span></span><br><span class="line">    <span class="type">int</span> k = <span class="number">0</span>, i = l, j = mid + <span class="number">1</span>;<span class="comment">//i指向左半边,j指向右半边</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">//两边都没有循环完，判断大小</span></span><br><span class="line">    <span class="keyword">while</span> (i &lt;= mid &amp;&amp; j &lt;= r)</span><br><span class="line">        <span class="keyword">if</span> (q[i] &lt;= q[j]) tmp[k ++ ] = q[i ++ ];</span><br><span class="line">        <span class="keyword">else</span> tmp[k ++ ] = q[j ++ ];</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//左右其中一边没有循环完的接到序列后面</span></span><br><span class="line">    <span class="keyword">while</span> (i &lt;= mid) tmp[k ++ ] = q[i ++ ];</span><br><span class="line">    <span class="keyword">while</span> (j &lt;= r) tmp[k ++ ] = q[j ++ ];</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//将tem付给q数组</span></span><br><span class="line">    <span class="keyword">for</span> (i = l, j = <span class="number">0</span>; i &lt;= r; i ++, j ++ ) q[i] = tmp[j];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p><strong>时间复杂度</strong></p>
 <ul>
@@ -4099,7 +4099,6 @@ else
 <p>满二叉树：一棵深度为k且有2^k^ -1个结点的二叉树称为满二叉树。</p>
 <p><img src="https://wjlpicture.oss-cn-beijing.aliyuncs.com/img/202205161616387.png" alt="image-20220516161637244"></p>
 <p>完全二叉树：除了最后一层结点，上面所有结点都是非空的；最后一层结点是从左到右依次排列的</p>
-<p><img src="C:/Users/win10/AppData/Roaming/Typora/typora-user-images/image-20220516161919953.png" alt="image-20220516161919953"></p>
 <p><strong>堆：</strong>是一个<a href="https://baike.baidu.com/item/完全二叉树/7773232?fr=aladdin">完全二叉树</a>；堆的结构可以分为<a href="https://so.csdn.net/so/search?q=大根堆&amp;spm=1001.2101.3001.7020">大根堆</a>和小根堆</p>
 <p><strong>小根堆与大根堆</strong>：每个结点的<strong>值</strong>都<strong>大于其左孩子和右孩子</strong>结点的值，称之为大根堆；每个结点的<strong>值</strong>都小于其左孩子和右孩子结点<strong>的值，称之为</strong>小根堆。</p>
 <p><img src="https://wjlpicture.oss-cn-beijing.aliyuncs.com/img/202205161623312.png" alt=""></p>
@@ -4107,21 +4106,15 @@ else
 <p><img src="https://wjlpicture.oss-cn-beijing.aliyuncs.com/img/202205161628374.png" alt=""></p>
 <p>还有一个基本概念：查找数组中某个数的父结点和左右孩子结点，比如已知索引为<strong>i</strong>的数，那么</p>
 <p>注意根节点下标从0开始</p>
-<p>1.父结点索引：(<em>i</em>-1)/2（这里计算机中的除以2，省略掉小数）</p>
-<p>2.左孩子索引：2<em>*i</em>+1</p>
-<p>3.右孩子索引：2<em>*i</em>+2</p>
+<p>1.父结点索引：$(i-1)/2$（这里计算机中的除以2，省略掉小数）</p>
+<p>2.左孩子索引：$2i+1$</p>
+<p>3.右孩子索引：$2i+2$</p>
 <h2 id="堆排序"><a href="#堆排序" class="headerlink" title="堆排序"></a><a href="https://www.acwing.com/problem/content/840/">堆排序</a></h2><p><img src="https://wjlpicture.oss-cn-beijing.aliyuncs.com/img/202205161645364.png" alt="image-20220516164534251"></p>
 <p>注意根结点是从下标为1开始</p>
 <p><strong>两个操作</strong>————<strong>针对小根堆</strong></p>
 <ul>
 <li><p><strong>down(x)</strong>：往下调整，就是从某个结点一直往下对比操作，三个结点对比，小的在父节点，大的在子节点。直到交换到不能交换为止（大的值往下沉）</p>
-<blockquote>
-<p>​       20      →父节点                   down操作后              12           </p>
-<p>12         8    →左孩子和右孩子  </p>
-<p>​                    down操作后       </p>
-<p>​          12                 最终结果→             8</p>
-<p>  20           8                                    20           12</p>
-</blockquote>
+<p><img src="https://wjlpicture.oss-cn-beijing.aliyuncs.com/img/202208041257965.png" alt="image-20220804125712199"></p>
 </li>
 <li><p><strong>up(x)</strong>: 往上调整，就是从某个结点一直上对比操作，三个结点对比，小的在父节点，大的在子节点。（小的值往上压）</p>
 </li>
@@ -7343,255 +7336,6 @@ else
       </tags>
   </entry>
   <entry>
-    <title>5.查找</title>
-    <url>/blot.github.io/2022/07/27/%E4%BA%94%E3%80%81%E6%9F%A5%E6%89%BE/</url>
-    <content><![CDATA[<h1 id="查找"><a href="#查找" class="headerlink" title="查找"></a>查找</h1><h3 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h3><p><strong>查找</strong>：在数据集合中寻找满足某种条件的数据元素的<strong>过程</strong>称为查找</p>
-<p><strong>查找表</strong>〈查找结构)：思于查找的数据集合称为查找表，它由同一类型的数据元素（或记录）组成</p>
-<p><strong>关键字</strong>：数据元素中唯一标识该元素的某个数据项的值，使用基于关键字的查找，查找结果应该是唯一的。</p>
-<p><img src="https://wjlpicture.oss-cn-beijing.aliyuncs.com/img/202207272247243.png" alt="image-20220727224712187"></p>
-<p>静态查找表：查找符合条件的元素（只关注查找效率）</p>
-<p>动态查找表：还要插入和删除操作  (除了查找效率，还要关注插入和删除的效率)</p>
-<p>查找长度：在查找运算中，需要对比关键字的次数称为查找长度</p>
-<p>平均查找长度：所有查找过程中进行关键字的比较次数的平均值</p>
-<p><img src="https://wjlpicture.oss-cn-beijing.aliyuncs.com/img/202207272256194.png" alt="image-20220727225653582"></p>
-<h2 id="顺序查找"><a href="#顺序查找" class="headerlink" title="顺序查找"></a>顺序查找</h2><ul>
-<li>又叫线性查找——用于线性表</li>
-</ul>
-<p><strong>算法思想：</strong></p>
-<ul>
-<li>从头到脚遍历（或者从脚到头遍历）</li>
-</ul>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> </span><br><span class="line">&#123;</span><br><span class="line">	ElemType *elem;</span><br><span class="line">	<span class="type">int</span> Tablelen;<span class="comment">//表长</span></span><br><span class="line">&#125;SSTable;</span><br><span class="line"><span class="comment">//顺序查找</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">Search_Seq</span><span class="params">(SSTable ST,ElemType key)</span></span>&#123;</span><br><span class="line">	<span class="type">int</span> i;</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;ST.Tablelen &amp;&amp; ST.elem[i]!=key;i++)</span><br><span class="line">	<span class="keyword">return</span> i==ST.Tablelen ? <span class="number">-1</span> : i;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="有哨兵"><a href="#有哨兵" class="headerlink" title="有哨兵"></a>有哨兵</h4><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> <span class="comment">//查找表的数据结构</span></span><br><span class="line">&#123;</span><br><span class="line">	ElemType *elem;</span><br><span class="line">	<span class="type">int</span> Tablelen;<span class="comment">//表长</span></span><br><span class="line">&#125;SSTable;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">Search_Seq</span><span class="params">(SSTable ST,ElemType key)</span></span>&#123;</span><br><span class="line">	ST.elem[<span class="number">0</span>]=key;<span class="comment">//哨兵</span></span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=ST.Tablelen;ST.elem[i]!=key;i--)</span><br><span class="line">	<span class="keyword">return</span> i;<span class="comment">//查找成功返回下标；失败返回0</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>用哨兵占数组0号位置，数据从下标1开始存</li>
-<li>无需判断是否越界，效率高</li>
-</ul>
-<p>查找效率</p>
-<ul>
-<li>查找成功：$ASL=\frac{1+n}{2}$</li>
-<li>查找失败：ASL=n+1</li>
-</ul>
-<h4 id="优化"><a href="#优化" class="headerlink" title="优化"></a>优化</h4><p><strong>对于有序表来说</strong></p>
-<p>该树又称查找判定树</p>
-<p><img src="https://wjlpicture.oss-cn-beijing.aliyuncs.com/img/202207272312835.png" alt="image-20220727231243733"></p>
-<p>查找不成功：$ASL=\frac{n}{2}+\frac{n}{n+1}$</p>
-<p><strong>被查概率不等时</strong></p>
-<ul>
-<li>概率大的靠在前面</li>
-</ul>
-<h2 id="折半查找"><a href="#折半查找" class="headerlink" title="折半查找"></a>折半查找</h2><ul>
-<li>又称二分查找，只适用于<strong>有序</strong>的<strong>顺序表</strong></li>
-</ul>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> <span class="comment">//查找表的数据结构</span></span><br><span class="line">&#123;</span><br><span class="line">	ElemType *elem;</span><br><span class="line">	<span class="type">int</span> Tablelen;<span class="comment">//表长</span></span><br><span class="line">&#125;SSTable;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">Binary_Search</span><span class="params">(SSTable ST,ElemType key)</span></span>&#123;</span><br><span class="line">	<span class="type">int</span> low=<span class="number">0</span>,high=L.Tablelen<span class="number">-1</span>,mid;</span><br><span class="line">	<span class="keyword">while</span>(low&lt;high)&#123;</span><br><span class="line">		mid=(low+high)/<span class="number">2</span>;</span><br><span class="line">		<span class="keyword">if</span>(L.elem[mid]==key)</span><br><span class="line">			<span class="keyword">return</span> mid;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span>(L.elem[mid]&gt;key)</span><br><span class="line">			high=mid<span class="number">-1</span>;</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">			low=mid+<span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">-1</span>;<span class="comment">//查找失败</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>效率分析</p>
-<p><img src="https://wjlpicture.oss-cn-beijing.aliyuncs.com/img/202207272322797.png" alt="image-20220727232219361"></p>
-<p>​    折半查找在<strong>查找不成功</strong>时与定值进行关键字的比较<strong>次数最多为树的高度</strong>：$⌈log_2 (n+1)⌉$或者$⌊log_2 n⌋$+1</p>
-<h3 id="查找判定树"><a href="#查找判定树" class="headerlink" title="查找判定树"></a>查找判定树</h3><p>当$mid=⌊(low+high)/2⌋$</p>
-<ul>
-<li>对于任何一个结点，必有：<strong>右子树结点-左子树结点树=0/1</strong><ul>
-<li>low和high有奇数个元素，则左右两部分元素相等</li>
-<li>当low和high有偶数个元素，mid分割后左半部分比右半部少一个元素</li>
-</ul>
-</li>
-<li><strong>折半查找的判定树一定是平衡二叉树</strong>（也是二叉排序树）</li>
-<li>只有最下面一层是不满的</li>
-<li>判定结点关键则：<strong>左&lt;根&lt;右</strong>，满足排序二叉树定义</li>
-<li>失败结点：n+1等于成功结点的空链域数目</li>
-<li><img src="https://wjlpicture.oss-cn-beijing.aliyuncs.com/img/202207272322797.png" alt="image-20220727232219361"></li>
-</ul>
-<p>时间复杂度：$O(log_2n)$</p>
-<p>当$mid=⌈(low+high)/2⌉$，则与上述相反</p>
-<ul>
-<li>对于任何一个结点，必有：<strong>左子树结点-右子树结点树=0/1</strong></li>
-</ul>
-<p><strong>题型</strong></p>
-<ul>
-<li>若是求查找成功或者失败的平均查找长度，则需要画出判定树进行求解</li>
-</ul>
-<h2 id="分块查找"><a href="#分块查找" class="headerlink" title="分块查找"></a>分块查找</h2><p>分块查找，又称索引顺序查找，算法过程如下:</p>
-<ul>
-<li><p>①在索引表中确定待查记录所属的分块（可顺序、可折半)</p>
-</li>
-<li><p>②在块内顺序查找</p>
-</li>
-</ul>
-<p>“<strong>索引表</strong>“中保存每个分块的<strong>最大关键字和分块的存储区间</strong></p>
-<p>可以用折半查找和顺序查找来遍历索引表</p>
-<p><img src="https://wjlpicture.oss-cn-beijing.aliyuncs.com/img/202207282300609.png" alt="image-20220728230000455"></p>
-<p> <strong>折半查找索引</strong></p>
-<ul>
-<li>若索引表中<strong>不包含目标关键字</strong>，则折半查找索引表最终停在low&gt;high，<strong>要在low所指分块中查找</strong></li>
-</ul>
-<h3 id="查找效率"><a href="#查找效率" class="headerlink" title="查找效率"></a><strong>查找效率</strong></h3><p><img src="https://wjlpicture.oss-cn-beijing.aliyuncs.com/img/202207282304142.png" alt="image-20220728230402623"></p>
-<p><img src="https://wjlpicture.oss-cn-beijing.aliyuncs.com/img/202207282306906.png" alt="image-20220728230609383"></p>
-<p>若查找表为动态查找表，一般用链式存储</p>
-<p><img src="https://wjlpicture.oss-cn-beijing.aliyuncs.com/img/202207292315272.png" alt="image-20220729231452882"></p>
-<ul>
-<li>注意题目是用折半查找还是顺序表查找索引表</li>
-</ul>
-<h1 id="B树"><a href="#B树" class="headerlink" title="B树"></a>B树</h1><h2 id="5叉查找树"><a href="#5叉查找树" class="headerlink" title="5叉查找树"></a>5叉查找树</h2><p>结点定义</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">//5叉查找树定义</span></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">Node</span>&#123;</span><br><span class="line">    ElemType keys[<span class="number">4</span>];<span class="comment">//最多4个关键字</span></span><br><span class="line">    <span class="keyword">struct</span> <span class="title class_">Node</span>*child[<span class="number">5</span>];<span class="comment">//最多5个孩子</span></span><br><span class="line">    <span class="type">int</span> num;  <span class="comment">//结点中有几个关键字</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>结点内关键字有序</li>
-<li>一个节点最少一个关键字，2个分叉</li>
-<li>最多4个关键字，5个分叉</li>
-</ul>
-<p>提高查找效率</p>
-<ul>
-<li>m叉查找树中，规定除了根节点外，任何结点至少有$⌈m/2⌉$个分叉，即至少含有$⌈m/2- 1⌉$个关键字</li>
-<li>m叉查找树中，规定对于任何一个结点，所有子树的高度都要相同</li>
-</ul>
-<h2 id="B树-1"><a href="#B树-1" class="headerlink" title="B树"></a>B树</h2><p>B树，又称<strong>多路平衡查找树</strong>，B树中所有<strong>结点的孩子个数的最大值</strong>称为B树的<strong>阶</strong>，通常用m表示。一棵m阶B树或为空树，或为满足如下特性的m叉树:</p>
-<ol>
-<li>树中<strong>每个结点至多有m棵子树</strong>，即<strong>至多</strong>含有<strong>m-1</strong>个关键字。</li>
-<li>若<strong>根结点不是终端结点</strong>，则<strong>至少有两棵子树。</strong><ul>
-<li>根节点的子树数∈⌈2, m⌉，关键字数∈⌈1, m-1⌉。</li>
-<li>其他结点的子树数∈⌈⌈m/2⌉, m⌉;关键字数∈⌈⌈m/2⌉-1, m-1⌉</li>
-</ul>
-</li>
-<li>除根结点外的所有<strong>非叶结点</strong>至少有<strong>「m/2⌉棵子树</strong>，即至少含有<strong>「m/2⌉-1个关键字</strong>。</li>
-<li>所有的<strong>叶结点都出现在同一层次上</strong>，并且不带信息（可以视为外部结点或类似于折半查找判定树的<strong>查找失败结点</strong>，实际上这些结点不存在，指向这些结点的指针为空)。</li>
-</ol>
-<p><img src="https://wjlpicture.oss-cn-beijing.aliyuncs.com/img/202207302131472.png" alt="image-20220730213139111"></p>
-<p>关键字的值:子树0&lt;关键字1&lt;子树1&lt;关键字2&lt;子树2&lt;….(类比二叉查找树左&lt;中&lt;右)</p>
-<p><strong>高度</strong></p>
-<ul>
-<li>最小高度——m-1个关键字，m个分叉<ul>
-<li>$h\geq log_m(n+1)$</li>
-</ul>
-</li>
-<li>最大高度——根节点2个分叉，其他节点⌈m/2⌉个分叉<ul>
-<li>$log_{⌈m/2⌉} \frac{1+n}{2}+1$</li>
-<li><img src="https://wjlpicture.oss-cn-beijing.aliyuncs.com/img/202207302156050.png" alt="image-20220730215600665"></li>
-</ul>
-</li>
-<li>n个关键字的结点必有n+1个叶子节点</li>
-</ul>
-<h2 id="B树操作"><a href="#B树操作" class="headerlink" title="B树操作"></a>B<a href="">树操作</a></h2><h3 id="插入"><a href="#插入" class="headerlink" title="插入"></a>插入</h3><p>情况如下</p>
-<p>新元素一定是插入到最底层“终端节点”，用“查找”来确定插入位置</p>
-<ol>
-<li>在插入key后，若<strong>导致原结点关键字数超过上限</strong>，则从中间位置(⌈m/2⌉)将其中的关键字分为两部分，<strong>左部分</strong>包含的关键字放在原结点中，<strong>右部分</strong>包含的关键字<strong>放到新结点中</strong>，<strong>中间位置⌈m/2⌉的结点插入原结点的父结点</strong></li>
-<li>若此时<strong>导致其父结点的关键字个数也超过了上限</strong>，则继续进行这种分裂操作，直至这个过程<strong>传到根结点</strong>为止，进而导致<strong>B树高度增I</strong>。</li>
-</ol>
-<p><img src="https://wjlpicture.oss-cn-beijing.aliyuncs.com/img/202207302209536.png" alt=""></p>
-<p><img src="https://wjlpicture.oss-cn-beijing.aliyuncs.com/img/202208012320524.png" alt=""></p>
-<h3 id="删除操作"><a href="#删除操作" class="headerlink" title="删除操作"></a>删除操作</h3><ul>
-<li><p>若被删除关键字在<strong>终端节点</strong>，则<strong>直接删除该关键字</strong>(要注意节点关键字个数<strong>是否低于下限⌈m/2⌉- 1</strong>)</p>
-</li>
-<li><p>若被删除关键字在<strong>非终端节点</strong>，则用<strong>直接前驱或直接后继</strong>来替代被删除的关键字（相当中序排序前驱和后继）</p>
-<ul>
-<li>直接前驱:当前关键字<strong>左侧指针所指子树中“最右下</strong>”的元素</li>
-<li>直接后继:当前关键字右侧指针所指子树中“最左下”的元素</li>
-<li>对非终端结点的操作必然可以转为对终端结点的操作</li>
-<li><img src="https://wjlpicture.oss-cn-beijing.aliyuncs.com/img/202207302216240.png" alt=""></li>
-</ul>
-</li>
-<li><p>兄弟够借：若被删除关键字所在结点删除前的关键字个<strong>数低于下限</strong>，且与此结点<strong>右（或左)兄弟结点</strong>的关键字个数<strong>还很宽裕</strong>，则需要调整该结点、右(或左）兄弟结点及其双亲结点（父子换位法)</p>
-<p><img src="https://wjlpicture.oss-cn-beijing.aliyuncs.com/img/202207302217193.png" alt=""></p>
-</li>
-<li><p><strong>兄弟不够借</strong>：若被删除关键字所在结点删除前的关键字个数低于下限，且此时与该结点相邻的左、右兄弟结点的关键字个数均等于⌈m/2⌉-1，则将关键字<strong>删除后与左(或右）兄弟结点及双亲结点中的关键字进行合并</strong></p>
-<p><img src="https://wjlpicture.oss-cn-beijing.aliyuncs.com/img/202207302217119.png" alt=""></p>
-</li>
-</ul>
-<h1 id="B-树"><a href="#B-树" class="headerlink" title="B+树"></a>B+树</h1><p><img src="https://wjlpicture.oss-cn-beijing.aliyuncs.com/img/202207302219498.png" alt="image-20220730221941446"></p>
-<p>一棵<strong>m阶</strong>的B+树需满足下列条件:</p>
-<ul>
-<li>每个分支结点最多有<strong>m棵子树</strong>(孩子结点)。</li>
-<li>非叶子结点的<strong>根结点至少有两棵子树</strong>，其他每个分支结点至少有⌈m/2⌉棵子树。<ul>
-<li>根节点的关键字数n∈⌈2, m⌉</li>
-<li>其他结点的关键字数n∈⌈⌈m/2⌉, m⌉</li>
-</ul>
-</li>
-<li>结点的<strong>子树个数与关键字个数相等</strong>。</li>
-<li>所有<strong>叶结点</strong>包含全部关键字及指向相应记录的<strong>指针</strong>，叶结点中将关键字按大小顺序排列，并且相邻叶结点按大小顺序相互链接起来。——支持顺序查找</li>
-<li>所有<strong>分支结点</strong>中仅包含它的各个<strong>子结点中关键字的最大值</strong>及指向其子结点的指针。</li>
-</ul>
-<p><strong>查找</strong></p>
-<ul>
-<li>B+树中，无论查找成功与否，最终一定都要走到最下面一层结点</li>
-</ul>
-<p>在B+树中，非叶结点不含有该关键字对应记录的存储地址。可以使一个磁盘块可以包含更多个关键字，使得B+树的阶更大，树高更矮，读磁盘次数更少，查找更快</p>
-<p><img src="https://wjlpicture.oss-cn-beijing.aliyuncs.com/img/202207302225805.png" alt="image-20220730222504542"></p>
-<h1 id="散列查找"><a href="#散列查找" class="headerlink" title="散列查找"></a>散列查找</h1><p><strong>散列表</strong>：又称哈希表。是一种数据结构，</p>
-<ul>
-<li><p>特点是︰数据元素的<strong>关键字</strong>与<strong>其存储地址直接相关</strong></p>
-</li>
-<li><p>若不同的关键字通过散列函数<strong>映射到同一个值</strong>，则称它们为“<strong>同义词</strong>”</p>
-</li>
-<li><p>通过散列函数确定的位置<strong>已经存放了其他元素</strong>，则称这种情况为<strong>冲突</strong></p>
-</li>
-</ul>
-<h2 id="拉链法"><a href="#拉链法" class="headerlink" title="拉链法"></a>拉链法</h2><p>又称链接法，链地址法</p>
-<p>处理冲突：将所有<strong>同义词放在一个链表中</strong></p>
-<p><img src="https://wjlpicture.oss-cn-beijing.aliyuncs.com/img/202208021246489.png" alt="image-20220802124604465"></p>
-<h3 id="散列查找-1"><a href="#散列查找-1" class="headerlink" title="散列查找"></a>散列查找</h3><p>若对拉链法存放的形式，若该位置为空链表，则查找长度为0</p>
-<p><strong>装填因子<em>α</em></strong>=表中记录数（元素个数）/散列表长度</p>
-<ul>
-<li>同时也等于平均查找失败的ASL</li>
-</ul>
-<h3 id="常见散列函数"><a href="#常见散列函数" class="headerlink" title="常见散列函数"></a><a href="https://blog.csdn.net/liu17234050/article/details/104270709?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522165941636116782248584598%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&amp;request_id=165941636116782248584598&amp;biz_id=0&amp;utm_medium=distribute.pc_search_result.none-task-blog-2~all~baidu_landing_v2~default-1-104270709-null-null.142^v38^new_blog_pos_by_title&amp;utm_term=%E5%B9%B3%E6%96%B9%E5%8F%96%E4%B8%AD%E6%B3%95&amp;spm=1018.2226.3001.4187">常见散列函数</a></h3><p><strong>留数除余法</strong></p>
-<ul>
-<li>H(key) = key % p </li>
-<li>散列表<strong>表长为m</strong>，取一个不大于m但<strong>最接近或等于m</strong>的<strong>质数p</strong></li>
-</ul>
-<p><strong>直接定址法</strong></p>
-<ul>
-<li>$H(key) = key或 H(key) = a*key + b$</li>
-<li>其中，a和b是常数。它适合<strong>关键字的分布基本连续</strong>的情况，若关键字分布不连续，空位较多，则会造成存储空间的浪费。</li>
-</ul>
-<p><strong>数字分析法</strong></p>
-<ul>
-<li><p>选取数码分布较为均匀的若干位作为散列地址</p>
-</li>
-<li><p>设关键字是r进制数（如十进制数)，而r个数码在各位上出现的<strong>频率不一定相同</strong>，可能在某些位上分布均匀一些，每种数码出现的机会均等;</p>
-</li>
-<li>而在某些位上<strong>分布不均匀</strong>，只有<strong>某几种数码经常出现</strong>，此时可选取数码<strong>分布较为均匀的若干位作为散列地址</strong>。这种方法适合于已知的关键字集合，若更换了关键字，则需要重新构造新的散列函数。</li>
-</ul>
-<p><img src="https://wjlpicture.oss-cn-beijing.aliyuncs.com/img/202208021258064.png" alt="image-20220802125810977"></p>
-<p><strong>平方取中法</strong></p>
-<ul>
-<li><p>取关键字的平方值的中间几位作为散列地址。</p>
-</li>
-<li><p>平方取中法比较<strong>适合</strong>于<strong>不知道关键字的分布</strong>，而<strong>位数又不是很大</strong>的情况</p>
-</li>
-<li>比如假设关键字是 4321，那么它的平方就是 18671041，抽取中间的 3 位就可以是 671，也可以是 710，用做散列地址</li>
-</ul>
-<p><strong>散列查找</strong>是典型的“<strong>用空间换时间</strong>”的算法，只要散列函数设计的合理，则散列表越长，冲突的概率越低。</p>
-<h2 id="开放定址法"><a href="#开放定址法" class="headerlink" title="开放定址法"></a>开放定址法</h2><p>所谓开放定址法，是指可存放新表项的<strong>空闲地址既向它的同义词</strong>表项开放，又向它的<strong>非同义词表项开放</strong>。</p>
-<p>其数学递推公式为：$H_i=(H(key)+d_i)%m$</p>
-<ul>
-<li>$i=0,1,2,…,k,k&lt;=m-1$,</li>
-<li>m为散列表长度，$d_i$为增量序列</li>
-<li>i可以理解为第i次发生冲突</li>
-</ul>
-<h3 id="线性寻址法"><a href="#线性寻址法" class="headerlink" title="线性寻址法"></a>线性寻址法</h3><ul>
-<li>发生冲突时，每次往后探测下一个相邻位置是否为空</li>
-<li>$i=0,1,2,…,k,k&lt;=m-1$,</li>
-</ul>
-<p>线性探测容易产生“聚集”现象。当表中的第i、i+1、i+2的位置上已经存储某些关键字，则下一次哈希地址为i、i+1、i+2、i+3的关键字都将企图填入到i+3的位置上，这种多个哈希地址不同的关键字争夺同一个后继哈希地址的现象称为“聚集”。聚集对查找效率有很大影响</p>
-<h3 id="平方探测法"><a href="#平方探测法" class="headerlink" title="平方探测法"></a>平方探测法</h3><ul>
-<li>$i=0^2,1^2,-1^2,2^2,…,k^2,-k^2,k&lt;=m/2$</li>
-<li><strong>注意</strong>：散列表长度m必须是一个可以表示成<strong>4j+ 3的素数</strong>，才能探测到所有位置</li>
-<li>平方探测法:比起线性探测法更不易产生“聚集（堆积)”问题</li>
-</ul>
-<h3 id="伪随机序列法"><a href="#伪随机序列法" class="headerlink" title="伪随机序列法"></a>伪随机序列法</h3><ul>
-<li>自己设计一个占位序列</li>
-</ul>
-<p><strong>注意</strong></p>
-<ul>
-<li>采用“<strong>开放定址法</strong>”时，删除结点不能简单地将被删结点的空间置为空，否则将截断在它之后填入</li>
-<li>散列表的同义词结点的查找路径，可以做一个<strong>“删除标记</strong>“，进行逻辑删除</li>
-</ul>
-]]></content>
-      <categories>
-        <category>数据结构</category>
-      </categories>
-      <tags>
-        <tag>数据结构</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>2.栈与队列</title>
     <url>/blot.github.io/2022/06/04/%E4%BA%8C%E3%80%81%E6%A0%88%E4%B8%8E%E9%98%9F%E5%88%97/</url>
     <content><![CDATA[<h1 id="栈的基本概念"><a href="#栈的基本概念" class="headerlink" title="栈的基本概念"></a>栈的基本概念</h1><h2 id="栈的定义"><a href="#栈的定义" class="headerlink" title="栈的定义"></a>栈的定义</h2><ol>
@@ -8373,43 +8117,252 @@ else
       </tags>
   </entry>
   <entry>
-    <title>2.搜索与图论</title>
-    <url>/blot.github.io/2022/06/03/%E6%90%9C%E7%B4%A2%E4%B8%8E%E5%9B%BE%E8%AE%BA/</url>
-    <content><![CDATA[<h1 id="搜索与图论"><a href="#搜索与图论" class="headerlink" title="搜索与图论"></a>搜索与图论</h1><h1 id="DFS"><a href="#DFS" class="headerlink" title="DFS"></a>DFS</h1><p>全称：<strong>深度优先搜索算法</strong></p>
-<ol>
-<li>dfs 最重要的是<strong>搜索顺序</strong>。用什么顺序遍历所有方案。</li>
-<li>递归加回溯</li>
-</ol>
-<h2 id="全排列"><a href="#全排列" class="headerlink" title="全排列"></a>全排列</h2><p>对于全排列问题，以 n = 3 为例，可以这样进行搜索</p>
-<p><strong>dfs递归搜索树</strong></p>
-<p><img src="https://wjlpicture.oss-cn-beijing.aliyuncs.com/img/202205191543338.png" alt=""></p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N=<span class="number">10</span>;</span><br><span class="line"><span class="type">int</span> n;</span><br><span class="line"><span class="type">int</span> path[N];<span class="comment">//保存序列</span></span><br><span class="line"><span class="type">bool</span> st[N];<span class="comment">//数字是否被用过</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">dfs</span><span class="params">(<span class="type">int</span> u)</span></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(u==n)&#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;n;i++) <span class="built_in">printf</span>(<span class="string">&quot;%d &quot;</span>,path[i]);</span><br><span class="line">		<span class="built_in">puts</span>(<span class="string">&quot;&quot;</span>);</span><br><span class="line">		<span class="keyword">return</span> ;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">		<span class="keyword">if</span>(!st[i])&#123;   <span class="comment">//如果数字 i 没有被用过</span></span><br><span class="line">			path[u]=i;<span class="comment">//放入空位</span></span><br><span class="line">			st[i]=<span class="literal">true</span>;<span class="comment">//修改数字状态</span></span><br><span class="line">			<span class="built_in">dfs</span>(u+<span class="number">1</span>);<span class="comment">//填下一个位</span></span><br><span class="line">			st[i]=<span class="literal">false</span>;<span class="comment">//回溯，取出i</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	cin&gt;&gt;n;</span><br><span class="line">	<span class="built_in">dfs</span>(<span class="number">0</span>);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>手动模拟</p>
-<p><img src="https://wjlpicture.oss-cn-beijing.aliyuncs.com/img/202205191545074.png" alt=""></p>
-<h2 id="n皇后问题"><a href="#n皇后问题" class="headerlink" title="n皇后问题"></a>n<a href="https://www.acwing.com/problem/content/845/">皇后问题</a></h2><h3 id="第一种搜索方法"><a href="#第一种搜索方法" class="headerlink" title="第一种搜索方法"></a>第一种搜索方法</h3><ul>
-<li>每一行必定有一个皇后，对行进行深度遍历。</li>
-<li>对于第 r 行的第 i 个位置，判断每个点是否可以放皇后，如果可以，则放皇后，然后处理 r + 1 行。直到 r = n，程序指行完毕</li>
+    <title>5.查找</title>
+    <url>/blot.github.io/2022/07/27/%E4%BA%94%E3%80%81%E6%9F%A5%E6%89%BE/</url>
+    <content><![CDATA[<h1 id="查找"><a href="#查找" class="headerlink" title="查找"></a>查找</h1><h3 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h3><p><strong>查找</strong>：在数据集合中寻找满足某种条件的数据元素的<strong>过程</strong>称为查找</p>
+<p><strong>查找表</strong>〈查找结构)：思于查找的数据集合称为查找表，它由同一类型的数据元素（或记录）组成</p>
+<p><strong>关键字</strong>：数据元素中唯一标识该元素的某个数据项的值，使用基于关键字的查找，查找结果应该是唯一的。</p>
+<p><img src="https://wjlpicture.oss-cn-beijing.aliyuncs.com/img/202207272247243.png" alt="image-20220727224712187"></p>
+<p>静态查找表：查找符合条件的元素（只关注查找效率）</p>
+<p>动态查找表：还要插入和删除操作  (除了查找效率，还要关注插入和删除的效率)</p>
+<p>查找长度：在查找运算中，需要对比关键字的次数称为查找长度</p>
+<p>平均查找长度：所有查找过程中进行关键字的比较次数的平均值</p>
+<p><img src="https://wjlpicture.oss-cn-beijing.aliyuncs.com/img/202207272256194.png" alt="image-20220727225653582"></p>
+<h2 id="顺序查找"><a href="#顺序查找" class="headerlink" title="顺序查找"></a>顺序查找</h2><ul>
+<li>又叫线性查找——用于线性表</li>
 </ul>
-<p><strong>对角线下标问题</strong></p>
+<p><strong>算法思想：</strong></p>
+<ul>
+<li>从头到脚遍历（或者从脚到头遍历）</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> </span><br><span class="line">&#123;</span><br><span class="line">	ElemType *elem;</span><br><span class="line">	<span class="type">int</span> Tablelen;<span class="comment">//表长</span></span><br><span class="line">&#125;SSTable;</span><br><span class="line"><span class="comment">//顺序查找</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">Search_Seq</span><span class="params">(SSTable ST,ElemType key)</span></span>&#123;</span><br><span class="line">	<span class="type">int</span> i;</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;ST.Tablelen &amp;&amp; ST.elem[i]!=key;i++)</span><br><span class="line">	<span class="keyword">return</span> i==ST.Tablelen ? <span class="number">-1</span> : i;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="有哨兵"><a href="#有哨兵" class="headerlink" title="有哨兵"></a>有哨兵</h4><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> <span class="comment">//查找表的数据结构</span></span><br><span class="line">&#123;</span><br><span class="line">	ElemType *elem;</span><br><span class="line">	<span class="type">int</span> Tablelen;<span class="comment">//表长</span></span><br><span class="line">&#125;SSTable;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">Search_Seq</span><span class="params">(SSTable ST,ElemType key)</span></span>&#123;</span><br><span class="line">	ST.elem[<span class="number">0</span>]=key;<span class="comment">//哨兵</span></span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=ST.Tablelen;ST.elem[i]!=key;i--)</span><br><span class="line">	<span class="keyword">return</span> i;<span class="comment">//查找成功返回下标；失败返回0</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>用哨兵占数组0号位置，数据从下标1开始存</li>
+<li>无需判断是否越界，效率高</li>
+</ul>
+<p>查找效率</p>
+<ul>
+<li>查找成功：$ASL=\frac{1+n}{2}$</li>
+<li>查找失败：ASL=n+1</li>
+</ul>
+<h4 id="优化"><a href="#优化" class="headerlink" title="优化"></a>优化</h4><p><strong>对于有序表来说</strong></p>
+<p>该树又称查找判定树</p>
+<p><img src="https://wjlpicture.oss-cn-beijing.aliyuncs.com/img/202207272312835.png" alt="image-20220727231243733"></p>
+<p>查找不成功：$ASL=\frac{n}{2}+\frac{n}{n+1}$</p>
+<p><strong>被查概率不等时</strong></p>
+<ul>
+<li>概率大的靠在前面</li>
+</ul>
+<h2 id="折半查找"><a href="#折半查找" class="headerlink" title="折半查找"></a>折半查找</h2><ul>
+<li>又称二分查找，只适用于<strong>有序</strong>的<strong>顺序表</strong></li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> <span class="comment">//查找表的数据结构</span></span><br><span class="line">&#123;</span><br><span class="line">	ElemType *elem;</span><br><span class="line">	<span class="type">int</span> Tablelen;<span class="comment">//表长</span></span><br><span class="line">&#125;SSTable;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">Binary_Search</span><span class="params">(SSTable ST,ElemType key)</span></span>&#123;</span><br><span class="line">	<span class="type">int</span> low=<span class="number">0</span>,high=L.Tablelen<span class="number">-1</span>,mid;</span><br><span class="line">	<span class="keyword">while</span>(low&lt;high)&#123;</span><br><span class="line">		mid=(low+high)/<span class="number">2</span>;</span><br><span class="line">		<span class="keyword">if</span>(L.elem[mid]==key)</span><br><span class="line">			<span class="keyword">return</span> mid;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span>(L.elem[mid]&gt;key)</span><br><span class="line">			high=mid<span class="number">-1</span>;</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">			low=mid+<span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">-1</span>;<span class="comment">//查找失败</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>效率分析</p>
+<p><img src="https://wjlpicture.oss-cn-beijing.aliyuncs.com/img/202207272322797.png" alt="image-20220727232219361"></p>
+<p>​    折半查找在<strong>查找不成功</strong>时与定值进行关键字的比较<strong>次数最多为树的高度</strong>：$⌈log_2 (n+1)⌉$或者$⌊log_2 n⌋$+1</p>
+<h3 id="查找判定树"><a href="#查找判定树" class="headerlink" title="查找判定树"></a>查找判定树</h3><p>当$mid=⌊(low+high)/2⌋$</p>
+<ul>
+<li>对于任何一个结点，必有：<strong>右子树结点-左子树结点树=0/1</strong><ul>
+<li>low和high有奇数个元素，则左右两部分元素相等</li>
+<li>当low和high有偶数个元素，mid分割后左半部分比右半部少一个元素</li>
+</ul>
+</li>
+<li><strong>折半查找的判定树一定是平衡二叉树</strong>（也是二叉排序树）</li>
+<li>只有最下面一层是不满的</li>
+<li>判定结点关键则：<strong>左&lt;根&lt;右</strong>，满足排序二叉树定义</li>
+<li>失败结点：n+1等于成功结点的空链域数目</li>
+<li><img src="https://wjlpicture.oss-cn-beijing.aliyuncs.com/img/202207272322797.png" alt="image-20220727232219361"></li>
+</ul>
+<p>时间复杂度：$O(log_2n)$</p>
+<p>当$mid=⌈(low+high)/2⌉$，则与上述相反</p>
+<ul>
+<li>对于任何一个结点，必有：<strong>左子树结点-右子树结点树=0/1</strong></li>
+</ul>
+<p><strong>题型</strong></p>
+<ul>
+<li>若是求查找成功或者失败的平均查找长度，则需要画出判定树进行求解</li>
+</ul>
+<h2 id="分块查找"><a href="#分块查找" class="headerlink" title="分块查找"></a>分块查找</h2><p>分块查找，又称索引顺序查找，算法过程如下:</p>
+<ul>
+<li><p>①在索引表中确定待查记录所属的分块（可顺序、可折半)</p>
+</li>
+<li><p>②在块内顺序查找</p>
+</li>
+</ul>
+<p>“<strong>索引表</strong>“中保存每个分块的<strong>最大关键字和分块的存储区间</strong></p>
+<p>可以用折半查找和顺序查找来遍历索引表</p>
+<p><img src="https://wjlpicture.oss-cn-beijing.aliyuncs.com/img/202207282300609.png" alt="image-20220728230000455"></p>
+<p> <strong>折半查找索引</strong></p>
+<ul>
+<li>若索引表中<strong>不包含目标关键字</strong>，则折半查找索引表最终停在low&gt;high，<strong>要在low所指分块中查找</strong></li>
+</ul>
+<h3 id="查找效率"><a href="#查找效率" class="headerlink" title="查找效率"></a><strong>查找效率</strong></h3><p><img src="https://wjlpicture.oss-cn-beijing.aliyuncs.com/img/202207282304142.png" alt="image-20220728230402623"></p>
+<p><img src="https://wjlpicture.oss-cn-beijing.aliyuncs.com/img/202207282306906.png" alt="image-20220728230609383"></p>
+<p>若查找表为动态查找表，一般用链式存储</p>
+<p><img src="https://wjlpicture.oss-cn-beijing.aliyuncs.com/img/202207292315272.png" alt="image-20220729231452882"></p>
+<ul>
+<li>注意题目是用折半查找还是顺序表查找索引表</li>
+</ul>
+<h1 id="B树"><a href="#B树" class="headerlink" title="B树"></a>B树</h1><h2 id="5叉查找树"><a href="#5叉查找树" class="headerlink" title="5叉查找树"></a>5叉查找树</h2><p>结点定义</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">//5叉查找树定义</span></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">Node</span>&#123;</span><br><span class="line">    ElemType keys[<span class="number">4</span>];<span class="comment">//最多4个关键字</span></span><br><span class="line">    <span class="keyword">struct</span> <span class="title class_">Node</span>*child[<span class="number">5</span>];<span class="comment">//最多5个孩子</span></span><br><span class="line">    <span class="type">int</span> num;  <span class="comment">//结点中有几个关键字</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>结点内关键字有序</li>
+<li>一个节点最少一个关键字，2个分叉</li>
+<li>最多4个关键字，5个分叉</li>
+</ul>
+<p>提高查找效率</p>
+<ul>
+<li>m叉查找树中，规定除了根节点外，任何结点至少有$⌈m/2⌉$个分叉，即至少含有$⌈m/2- 1⌉$个关键字</li>
+<li>m叉查找树中，规定对于任何一个结点，所有子树的高度都要相同</li>
+</ul>
+<h2 id="B树-1"><a href="#B树-1" class="headerlink" title="B树"></a>B树</h2><p>B树，又称<strong>多路平衡查找树</strong>，B树中所有<strong>结点的孩子个数的最大值</strong>称为B树的<strong>阶</strong>，通常用m表示。一棵m阶B树或为空树，或为满足如下特性的m叉树:</p>
 <ol>
-<li>反对角线，<code>y=-x+c,c=x+y,c</code>这里代表截距</li>
-<li>正对角线<code>y=x+c，c=y-x</code>,所以这里的c可能是负的，但作为数组下标，不能是负的，所以我们把正对角线加上一个偏移量，<code>c=y-x+n</code>是没影响的，因为截距最大是n，所以我加了n，也可以加比n大的任何数，x就是下面的h也就是行，y就是下面的l 也就是列</li>
-<li>理解为<code>xoy</code>平面方程<code>y=kx+b</code>方程，截距问题</li>
+<li>树中<strong>每个结点至多有m棵子树</strong>，即<strong>至多</strong>含有<strong>m-1</strong>个关键字。</li>
+<li>若<strong>根结点不是终端结点</strong>，则<strong>至少有两棵子树。</strong><ul>
+<li>根节点的子树数∈⌈2, m⌉，关键字数∈⌈1, m-1⌉。</li>
+<li>其他结点的子树数∈⌈⌈m/2⌉, m⌉;关键字数∈⌈⌈m/2⌉-1, m-1⌉</li>
+</ul>
+</li>
+<li>除根结点外的所有<strong>非叶结点</strong>至少有<strong>「m/2⌉棵子树</strong>，即至少含有<strong>「m/2⌉-1个关键字</strong>。</li>
+<li>所有的<strong>叶结点都出现在同一层次上</strong>，并且不带信息（可以视为外部结点或类似于折半查找判定树的<strong>查找失败结点</strong>，实际上这些结点不存在，指向这些结点的指针为空)。</li>
 </ol>
-<p><strong>时间复杂度</strong>：O(n!)</p>
-<p><img src="https://wjlpicture.oss-cn-beijing.aliyuncs.com/img/202205211614109.jpg" alt=""></p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N = <span class="number">20</span>;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> n;</span><br><span class="line"><span class="type">char</span> g[N][N];<span class="comment">//存储棋盘</span></span><br><span class="line"><span class="type">bool</span> col[N], dg[N], udg[N];<span class="comment">//点对应列和两个斜线是否有皇后，dg为对角线,udg为反对角线</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//u相当行</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">dfs</span><span class="params">(<span class="type">int</span> u)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (u == n)<span class="comment">//放满了棋盘，输出棋盘</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; i ++ ) <span class="built_in">puts</span>(g[i]);</span><br><span class="line">        <span class="built_in">puts</span>(<span class="string">&quot;&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//最开始的循环：就是第一行第一个放皇后，递归输出所有满足条件的方案，回溯，下一步就是在第一行第二列放皇后，递归输出所有方案....</span></span><br><span class="line">    <span class="comment">//u行,i列</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; i ++ )</span><br><span class="line">        <span class="keyword">if</span> (!col[i] &amp;&amp; !dg[u + i] &amp;&amp; !udg[n - u + i])<span class="comment">//不冲突，放皇后</span></span><br><span class="line">        &#123;</span><br><span class="line">            g[u][i] = <span class="string">&#x27;Q&#x27;</span>;</span><br><span class="line">            col[i] = dg[u + i] = udg[n - u + i] = <span class="literal">true</span>;<span class="comment">//对应的 列， 斜线 状态改变</span></span><br><span class="line">            <span class="built_in">dfs</span>(u + <span class="number">1</span>);<span class="comment">//递归下一行</span></span><br><span class="line">            col[i] = dg[u + i] = udg[n - u + i] = <span class="literal">false</span>;<span class="comment">//恢复现场</span></span><br><span class="line">            g[u][i] = <span class="string">&#x27;.&#x27;</span>;</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    cin &gt;&gt; n;</span><br><span class="line">    <span class="comment">//初始化,全是空格</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; i ++ )</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">0</span>; j &lt; n; j ++ )</span><br><span class="line">            g[i][j] = <span class="string">&#x27;.&#x27;</span>;</span><br><span class="line">    <span class="built_in">dfs</span>(<span class="number">0</span>);<span class="comment">//从第0行递归</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="第二种搜索方法"><a href="#第二种搜索方法" class="headerlink" title="第二种搜索方法"></a>第二种搜索方法</h3><ol>
-<li>（DFS按每个元素枚举）时间复杂度O(2的n^2^)</li>
-<li>时间复杂度分析：每个位置都有两种情况，总共有 n^2^ 个位置</li>
+<p><img src="https://wjlpicture.oss-cn-beijing.aliyuncs.com/img/202207302131472.png" alt="image-20220730213139111"></p>
+<p>关键字的值:子树0&lt;关键字1&lt;子树1&lt;关键字2&lt;子树2&lt;….(类比二叉查找树左&lt;中&lt;右)</p>
+<p><strong>高度</strong></p>
+<ul>
+<li>最小高度——m-1个关键字，m个分叉<ul>
+<li>$h\geq log_m(n+1)$</li>
+</ul>
+</li>
+<li>最大高度——根节点2个分叉，其他节点⌈m/2⌉个分叉<ul>
+<li>$log_{⌈m/2⌉} \frac{1+n}{2}+1$</li>
+<li><img src="https://wjlpicture.oss-cn-beijing.aliyuncs.com/img/202207302156050.png" alt="image-20220730215600665"></li>
+</ul>
+</li>
+<li>n个关键字的结点必有n+1个叶子节点</li>
+</ul>
+<h2 id="B树操作"><a href="#B树操作" class="headerlink" title="B树操作"></a>B<a href="">树操作</a></h2><h3 id="插入"><a href="#插入" class="headerlink" title="插入"></a>插入</h3><p>情况如下</p>
+<p>新元素一定是插入到最底层“终端节点”，用“查找”来确定插入位置</p>
+<ol>
+<li>在插入key后，若<strong>导致原结点关键字数超过上限</strong>，则从中间位置(⌈m/2⌉)将其中的关键字分为两部分，<strong>左部分</strong>包含的关键字放在原结点中，<strong>右部分</strong>包含的关键字<strong>放到新结点中</strong>，<strong>中间位置⌈m/2⌉的结点插入原结点的父结点</strong></li>
+<li>若此时<strong>导致其父结点的关键字个数也超过了上限</strong>，则继续进行这种分裂操作，直至这个过程<strong>传到根结点</strong>为止，进而导致<strong>B树高度增I</strong>。</li>
 </ol>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 不同搜索顺序 时间复杂度不同  所以搜索顺序很重要！</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N = <span class="number">10</span>;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> n;</span><br><span class="line"><span class="type">bool</span> row[N], col[N], dg[N * <span class="number">2</span>], udg[N * <span class="number">2</span>];<span class="comment">// 因为是一个个搜索，所以加了row</span></span><br><span class="line"><span class="type">char</span> g[N][N];</span><br><span class="line"></span><br><span class="line"><span class="comment">// s表示已经放上去的皇后个数,x行，n列</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">dfs</span><span class="params">(<span class="type">int</span> x, <span class="type">int</span> y, <span class="type">int</span> s)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">// 处理超出边界的情况</span></span><br><span class="line">    <span class="keyword">if</span> (s &gt; n) <span class="keyword">return</span>;</span><br><span class="line">    <span class="keyword">if</span> (y == n) y = <span class="number">0</span>, x ++ ;<span class="comment">//枚举下一行</span></span><br><span class="line">    <span class="keyword">if</span> (x == n)<span class="comment">// x==n说明已经枚举完n^2个位置</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (s == n)<span class="comment">// s==n说明成功放上去了n个皇后</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; i ++ ) <span class="built_in">puts</span>(g[i]);</span><br><span class="line">            <span class="built_in">puts</span>(<span class="string">&quot;&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//两种情况一直递归</span></span><br><span class="line">    <span class="comment">// 分支1：不放皇后</span></span><br><span class="line">    <span class="built_in">dfs</span>(x, y + <span class="number">1</span>, s);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//分支2：放皇后</span></span><br><span class="line">    <span class="keyword">if</span> (!row[x] &amp;&amp; !col[y] &amp;&amp; !dg[x + y] &amp;&amp; !udg[x - y + n])</span><br><span class="line">    &#123;</span><br><span class="line">        row[x] = col[y] = dg[x + y] = udg[x - y + n] = <span class="literal">true</span>;</span><br><span class="line">        g[x][y] = <span class="string">&#x27;Q&#x27;</span>;</span><br><span class="line">        <span class="built_in">dfs</span>(x, y + <span class="number">1</span>, s + <span class="number">1</span>);</span><br><span class="line">        g[x][y] = <span class="string">&#x27;.&#x27;</span>;</span><br><span class="line">        row[x] = col[y] = dg[x + y] = udg[x - y + n] = <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    cin &gt;&gt; n;</span><br><span class="line">    <span class="comment">//初始化,全是空格</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; i ++ )</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">0</span>; j &lt; n; j ++ )</span><br><span class="line">            g[i][j] = <span class="string">&#x27;.&#x27;</span>;</span><br><span class="line">    <span class="built_in">dfs</span>(<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="https://wjlpicture.oss-cn-beijing.aliyuncs.com/img/202207302209536.png" alt=""></p>
+<p><img src="https://wjlpicture.oss-cn-beijing.aliyuncs.com/img/202208012320524.png" alt=""></p>
+<h3 id="删除操作"><a href="#删除操作" class="headerlink" title="删除操作"></a>删除操作</h3><ul>
+<li><p>若被删除关键字在<strong>终端节点</strong>，则<strong>直接删除该关键字</strong>(要注意节点关键字个数<strong>是否低于下限⌈m/2⌉- 1</strong>)</p>
+</li>
+<li><p>若被删除关键字在<strong>非终端节点</strong>，则用<strong>直接前驱或直接后继</strong>来替代被删除的关键字（相当中序排序前驱和后继）</p>
+<ul>
+<li>直接前驱:当前关键字<strong>左侧指针所指子树中“最右下</strong>”的元素</li>
+<li>直接后继:当前关键字右侧指针所指子树中“最左下”的元素</li>
+<li>对非终端结点的操作必然可以转为对终端结点的操作</li>
+<li><img src="https://wjlpicture.oss-cn-beijing.aliyuncs.com/img/202207302216240.png" alt=""></li>
+</ul>
+</li>
+<li><p>兄弟够借：若被删除关键字所在结点删除前的关键字个<strong>数低于下限</strong>，且与此结点<strong>右（或左)兄弟结点</strong>的关键字个数<strong>还很宽裕</strong>，则需要调整该结点、右(或左）兄弟结点及其双亲结点（父子换位法)</p>
+<p><img src="https://wjlpicture.oss-cn-beijing.aliyuncs.com/img/202207302217193.png" alt=""></p>
+</li>
+<li><p><strong>兄弟不够借</strong>：若被删除关键字所在结点删除前的关键字个数低于下限，且此时与该结点相邻的左、右兄弟结点的关键字个数均等于⌈m/2⌉-1，则将关键字<strong>删除后与左(或右）兄弟结点及双亲结点中的关键字进行合并</strong></p>
+<p><img src="https://wjlpicture.oss-cn-beijing.aliyuncs.com/img/202207302217119.png" alt=""></p>
+</li>
+</ul>
+<h1 id="B-树"><a href="#B-树" class="headerlink" title="B+树"></a>B+树</h1><p><img src="https://wjlpicture.oss-cn-beijing.aliyuncs.com/img/202207302219498.png" alt="image-20220730221941446"></p>
+<p>一棵<strong>m阶</strong>的B+树需满足下列条件:</p>
+<ul>
+<li>每个分支结点最多有<strong>m棵子树</strong>(孩子结点)。</li>
+<li>非叶子结点的<strong>根结点至少有两棵子树</strong>，其他每个分支结点至少有⌈m/2⌉棵子树。<ul>
+<li>根节点的关键字数n∈⌈2, m⌉</li>
+<li>其他结点的关键字数n∈⌈⌈m/2⌉, m⌉</li>
+</ul>
+</li>
+<li>结点的<strong>子树个数与关键字个数相等</strong>。</li>
+<li>所有<strong>叶结点</strong>包含全部关键字及指向相应记录的<strong>指针</strong>，叶结点中将关键字按大小顺序排列，并且相邻叶结点按大小顺序相互链接起来。——支持顺序查找</li>
+<li>所有<strong>分支结点</strong>中仅包含它的各个<strong>子结点中关键字的最大值</strong>及指向其子结点的指针。</li>
+</ul>
+<p><strong>查找</strong></p>
+<ul>
+<li>B+树中，无论查找成功与否，最终一定都要走到最下面一层结点</li>
+</ul>
+<p>在B+树中，非叶结点不含有该关键字对应记录的存储地址。可以使一个磁盘块可以包含更多个关键字，使得B+树的阶更大，树高更矮，读磁盘次数更少，查找更快</p>
+<p><img src="https://wjlpicture.oss-cn-beijing.aliyuncs.com/img/202207302225805.png" alt="image-20220730222504542"></p>
+<h1 id="散列查找"><a href="#散列查找" class="headerlink" title="散列查找"></a>散列查找</h1><p><strong>散列表</strong>：又称哈希表。是一种数据结构，</p>
+<ul>
+<li><p>特点是︰数据元素的<strong>关键字</strong>与<strong>其存储地址直接相关</strong></p>
+</li>
+<li><p>若不同的关键字通过散列函数<strong>映射到同一个值</strong>，则称它们为“<strong>同义词</strong>”</p>
+</li>
+<li><p>通过散列函数确定的位置<strong>已经存放了其他元素</strong>，则称这种情况为<strong>冲突</strong></p>
+</li>
+</ul>
+<h2 id="拉链法"><a href="#拉链法" class="headerlink" title="拉链法"></a>拉链法</h2><p>又称链接法，链地址法</p>
+<p>处理冲突：将所有<strong>同义词放在一个链表中</strong></p>
+<p><img src="https://wjlpicture.oss-cn-beijing.aliyuncs.com/img/202208021246489.png" alt="image-20220802124604465"></p>
+<h3 id="散列查找-1"><a href="#散列查找-1" class="headerlink" title="散列查找"></a>散列查找</h3><p>若对拉链法存放的形式，若该位置为空链表，则查找长度为0</p>
+<p><strong>装填因子<em>α</em></strong>=表中记录数（元素个数）/散列表长度</p>
+<ul>
+<li>同时也等于平均查找失败的ASL</li>
+</ul>
+<h3 id="常见散列函数"><a href="#常见散列函数" class="headerlink" title="常见散列函数"></a><a href="https://blog.csdn.net/liu17234050/article/details/104270709?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522165941636116782248584598%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&amp;request_id=165941636116782248584598&amp;biz_id=0&amp;utm_medium=distribute.pc_search_result.none-task-blog-2~all~baidu_landing_v2~default-1-104270709-null-null.142^v38^new_blog_pos_by_title&amp;utm_term=%E5%B9%B3%E6%96%B9%E5%8F%96%E4%B8%AD%E6%B3%95&amp;spm=1018.2226.3001.4187">常见散列函数</a></h3><p><strong>留数除余法</strong></p>
+<ul>
+<li>H(key) = key % p </li>
+<li>散列表<strong>表长为m</strong>，取一个不大于m但<strong>最接近或等于m</strong>的<strong>质数p</strong></li>
+</ul>
+<p><strong>直接定址法</strong></p>
+<ul>
+<li>$H(key) = key或 H(key) = a*key + b$</li>
+<li>其中，a和b是常数。它适合<strong>关键字的分布基本连续</strong>的情况，若关键字分布不连续，空位较多，则会造成存储空间的浪费。</li>
+</ul>
+<p><strong>数字分析法</strong></p>
+<ul>
+<li><p>选取数码分布较为均匀的若干位作为散列地址</p>
+</li>
+<li><p>设关键字是r进制数（如十进制数)，而r个数码在各位上出现的<strong>频率不一定相同</strong>，可能在某些位上分布均匀一些，每种数码出现的机会均等;</p>
+</li>
+<li>而在某些位上<strong>分布不均匀</strong>，只有<strong>某几种数码经常出现</strong>，此时可选取数码<strong>分布较为均匀的若干位作为散列地址</strong>。这种方法适合于已知的关键字集合，若更换了关键字，则需要重新构造新的散列函数。</li>
+</ul>
+<p><img src="https://wjlpicture.oss-cn-beijing.aliyuncs.com/img/202208021258064.png" alt="image-20220802125810977"></p>
+<p><strong>平方取中法</strong></p>
+<ul>
+<li><p>取关键字的平方值的中间几位作为散列地址。</p>
+</li>
+<li><p>平方取中法比较<strong>适合</strong>于<strong>不知道关键字的分布</strong>，而<strong>位数又不是很大</strong>的情况</p>
+</li>
+<li>比如假设关键字是 4321，那么它的平方就是 18671041，抽取中间的 3 位就可以是 671，也可以是 710，用做散列地址</li>
+</ul>
+<p><strong>散列查找</strong>是典型的“<strong>用空间换时间</strong>”的算法，只要散列函数设计的合理，则散列表越长，冲突的概率越低。</p>
+<h2 id="开放定址法"><a href="#开放定址法" class="headerlink" title="开放定址法"></a>开放定址法</h2><p>所谓开放定址法，是指可存放新表项的<strong>空闲地址既向它的同义词</strong>表项开放，又向它的<strong>非同义词表项开放</strong>。</p>
+<p>其数学递推公式为：$H_i=(H(key)+d_i)%m$</p>
+<ul>
+<li>$i=0,1,2,…,k,k&lt;=m-1$,</li>
+<li>m为散列表长度，$d_i$为增量序列</li>
+<li>i可以理解为第i次发生冲突</li>
+</ul>
+<h3 id="线性寻址法"><a href="#线性寻址法" class="headerlink" title="线性寻址法"></a>线性寻址法</h3><ul>
+<li>发生冲突时，每次往后探测下一个相邻位置是否为空</li>
+<li>$i=0,1,2,…,k,k&lt;=m-1$,</li>
+</ul>
+<p>线性探测容易产生“聚集”现象。当表中的第i、i+1、i+2的位置上已经存储某些关键字，则下一次哈希地址为i、i+1、i+2、i+3的关键字都将企图填入到i+3的位置上，这种多个哈希地址不同的关键字争夺同一个后继哈希地址的现象称为“聚集”。聚集对查找效率有很大影响</p>
+<h3 id="平方探测法"><a href="#平方探测法" class="headerlink" title="平方探测法"></a>平方探测法</h3><ul>
+<li>$i=0^2,1^2,-1^2,2^2,…,k^2,-k^2,k&lt;=m/2$</li>
+<li><strong>注意</strong>：散列表长度m必须是一个可以表示成<strong>4j+ 3的素数</strong>，才能探测到所有位置</li>
+<li>平方探测法:比起线性探测法更不易产生“聚集（堆积)”问题</li>
+</ul>
+<h3 id="伪随机序列法"><a href="#伪随机序列法" class="headerlink" title="伪随机序列法"></a>伪随机序列法</h3><ul>
+<li>自己设计一个占位序列</li>
+</ul>
+<p><strong>注意</strong></p>
+<ul>
+<li>采用“<strong>开放定址法</strong>”时，删除结点不能简单地将被删结点的空间置为空，否则将截断在它之后填入</li>
+<li>散列表的同义词结点的查找路径，可以做一个<strong>“删除标记</strong>“，进行逻辑删除</li>
+</ul>
 ]]></content>
       <categories>
-        <category>acwing基础算法</category>
+        <category>数据结构</category>
       </categories>
       <tags>
-        <tag>acwing</tag>
+        <tag>数据结构</tag>
       </tags>
   </entry>
   <entry>
@@ -8526,6 +8479,7 @@ else
 <li>用一个元素（不一定是第一个）把待排序序列“划分”为两个部分，左边更小，右边更大，该元素的最终位置已确认</li>
 <li>算法实现（重点）</li>
 </ol>
+<p><img src="https://wjlpicture.oss-cn-beijing.aliyuncs.com/img/202203012314248.gif" alt=""></p>
 <figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">//用第一个元素将待排序序列划分为左右两个部分</span></span><br><span class="line"><span class="type">int</span> <span class="title function_">Partition</span><span class="params">(<span class="type">int</span> A[], <span class="type">int</span> low, <span class="type">int</span> high)</span>&#123;</span><br><span class="line">    <span class="type">int</span> pivot = A[low];          <span class="comment">//用第一个元素作为枢轴</span></span><br><span class="line">    <span class="keyword">while</span>(low&lt;high)&#123;</span><br><span class="line">        <span class="keyword">while</span>(low&lt;high &amp;&amp; A[high]&gt;=pivot) --high; <span class="comment">//high所指元素大于枢轴，high左移</span></span><br><span class="line">        A[low] = A[high];   <span class="comment">//high所指元素小于枢轴，移动到左侧</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span>(low&lt;high &amp;&amp; A[low]&lt;=pivot)  ++low; <span class="comment">//low所指元素小于枢轴，low右移</span></span><br><span class="line">        A[high] = A[low];   <span class="comment">//low所指元素大于枢轴，移动到右侧</span></span><br><span class="line">    &#125;</span><br><span class="line">    A[low] = pivot   <span class="comment">//枢轴元素存放到最终位置</span></span><br><span class="line">    <span class="keyword">return</span> low；     <span class="comment">//返回存放枢轴的最终位置</span></span><br><span class="line">&#125; </span><br><span class="line"></span><br><span class="line"><span class="comment">//快速排序</span></span><br><span class="line"><span class="type">void</span> QuickSort(<span class="type">int</span> A[], <span class="type">int</span> low, <span class="type">int</span> high)&#123;</span><br><span class="line">    <span class="keyword">if</span>(low&lt;high)   <span class="comment">//递归跳出条件</span></span><br><span class="line">        <span class="type">int</span> pivotpos = Partition(A, low, high);   <span class="comment">//划分</span></span><br><span class="line">        QuickSort（A, low, pivotpos - <span class="number">1</span>);    <span class="comment">//划分左子表</span></span><br><span class="line">        QuickSort（A, pivotpos + <span class="number">1</span>, high);   <span class="comment">//划分右子表</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <ol>
 <li><strong>算法效率分析</strong></li>
@@ -8554,6 +8508,195 @@ else
 </li>
 <li>快速排序使所有内部排序算法中平均<strong>性能最优</strong>的排序算法；</li>
 <li><strong>稳定性：</strong> 不稳定；</li>
+</ul>
+<h4 id="acw算法实现"><a href="#acw算法实现" class="headerlink" title="acw算法实现"></a>acw算法实现</h4><ol>
+<li>第一步，先v判断v&lt;x,满足则一直判断下一个位置</li>
+<li>第二，若v&gt;=x,则判断r&gt;x,满足则判断下一个位置</li>
+<li>第三，若r&lt;=x，交换对应的数值大小</li>
+<li>然后递归处理两端</li>
+</ol>
+<p><img src="https://wjlpicture.oss-cn-beijing.aliyuncs.com/img/202203012314248.gif" alt=""></p>
+<p><strong>时间复杂度</strong></p>
+<ul>
+<li>最好时间复杂度:  $O(nlog_2n)$</li>
+<li>最坏时间复杂度:  $O(n^2)$</li>
+<li>平均时间复杂度:  $O(nlog_2n)$</li>
+</ul>
+<p><a href="https://www.acwing.com/problem/content/submission/code_detail/11404073/">题目</a></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">//l为最左端，r为最右端，x为判断值</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">quick_sort</span><span class="params">(<span class="type">int</span> q[], <span class="type">int</span> l, <span class="type">int</span> r)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (l &gt;= r) <span class="keyword">return</span>;<span class="comment">//最终条件,左遇右,回归</span></span><br><span class="line">    <span class="type">int</span> i = l - <span class="number">1</span>, j = r + <span class="number">1</span>, x = q[l+r&gt;&gt;<span class="number">1</span>];;<span class="comment">//初始化，l+r的值右移1位，相当l+r的值除以2取整</span></span><br><span class="line">    <span class="keyword">while</span> (i &lt; j)<span class="comment">//判断相遇，则退出循环</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">do</span> i ++ ; <span class="keyword">while</span> (q[i] &lt; x);<span class="comment">//判断左端数据，小于x</span></span><br><span class="line">        <span class="keyword">do</span> j -- ; <span class="keyword">while</span> (q[j] &gt; x);<span class="comment">//判断右端数据,小于y</span></span><br><span class="line">        <span class="keyword">if</span> (i &lt; j) <span class="built_in">swap</span>(q[i], q[j]);<span class="comment">//交换位置</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">quick_sort</span>(q, l, j);<span class="comment">//左递归</span></span><br><span class="line">    <span class="built_in">quick_sort</span>(q, j + <span class="number">1</span>, r);<span class="comment">//右递归</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="选择排序"><a href="#选择排序" class="headerlink" title="选择排序"></a>选择排序</h2><p><strong>选择排序思想：</strong> 每一趟在<strong>待排序元素中选取关键字最小</strong>（或最大）的元素<strong>加入有序子序列</strong>；</p>
+<h3 id="简单选择排序"><a href="#简单选择排序" class="headerlink" title="简单选择排序"></a>简单选择排序</h3><ol>
+<li><code>n</code>个元素的简单选择排序需要<code>n-1</code>趟处理；</li>
+<li>代码实现</li>
+</ol>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">//交换</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">swap</span><span class="params">(<span class="type">int</span> &amp;a, <span class="type">int</span> &amp;b)</span>&#123;</span><br><span class="line">    <span class="type">int</span> temp = a;</span><br><span class="line">    a = b;</span><br><span class="line">    b = temp;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">SelectSort</span><span class="params">(<span class="type">int</span> A[], <span class="type">int</span> n)</span>&#123;       <span class="comment">//A从0开始</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>; i&lt;n<span class="number">-1</span>; i++)&#123;          <span class="comment">//一共进行n-1趟，i指向待排序序列中第一个元素</span></span><br><span class="line">        <span class="type">int</span> min = i;                   <span class="comment">//记录最小元素位置</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> j=i+<span class="number">1</span>; j&lt;n; j++)       <span class="comment">//在A[i...n-1]中选择最小的元素</span></span><br><span class="line">            <span class="keyword">if</span>(A[j]&lt;A[min]) min = j;   <span class="comment">//更新最小元素位置</span></span><br><span class="line">        <span class="keyword">if</span>(min!=i)                     </span><br><span class="line">            swao(A[i],A[min]);         <span class="comment">//交换</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="https://wjlpicture.oss-cn-beijing.aliyuncs.com/img/202208041239107.gif" alt=""></p>
+<ol>
+<li><strong>算法效率分析</strong></li>
+</ol>
+<ul>
+<li><strong>空间复杂度</strong> = <code>O(1)</code></li>
+<li>无论有序、逆序、乱序，都需要n-1的处理，总共需要<strong>对比关键字</strong> <code>(n-1)+(n-2)+...+1 = n(n-2)/2</code> 次，元素<strong>交换次数</strong> &lt; <code>n-1</code>; <strong>时间复杂度</strong> = <code>O(n²)</code></li>
+<li><strong>稳定性：</strong> 不稳定</li>
+<li><strong>适用性：</strong> 既可以用于顺序表，也可以用于链表；</li>
+</ul>
+<h3 id="堆排序"><a href="#堆排序" class="headerlink" title="堆排序"></a>堆排序</h3><ol>
+<li><strong>什么是“堆（Heap）”？</strong></li>
+</ol>
+<p>可理解为顺序存储的二叉树，注意</p>
+<blockquote>
+<p>可以将堆视为一棵 <strong>完全二叉树</strong> (✔)</p>
+<p>可以将堆视为一棵 <strong>二叉排序树</strong> (✖)</p>
+</blockquote>
+<ul>
+<li>大根堆：完全二叉树中，根 ≥ 左、右</li>
+<li>小根堆：完全二叉树中，根 ≤ 左、右</li>
+</ul>
+<ol>
+<li><strong>如何基于“堆”进行排序</strong></li>
+</ol>
+<p>基本思路：每一趟在待排序元素中选取关键字最小（或最大）的元素加入有序子序列，<strong>堆顶元素的关键字最大或最小</strong> （以下以大根堆为例）</p>
+<p>① 将给定初始序列(n个元素)，<strong>建立初始大根堆</strong>：把所有<strong>非终端结点</strong> <strong>从后往前</strong>都检查一遍，是否满足大根堆的要求——<code>根 ≥ 左、右</code>，若不满足，则将当前结点与更大的孩子互换</p>
+<p><img src="https://wjlpicture.oss-cn-beijing.aliyuncs.com/img/202205161623312.png" alt=""></p>
+<ul>
+<li>在顺序存储的完全二叉树中:<ul>
+<li>非终端结点的编号 <code>i≤⌊n/2⌋</code></li>
+<li><code>i</code> 的左孩子 <code>2i</code></li>
+<li><code>i</code> 的右孩子 <code>2i+1</code></li>
+<li><code>i</code> 的父节点<code>⌊i/2⌋</code></li>
+</ul>
+</li>
+<li>更小的元素“下坠”后，可能导致下一层的子树不符合大根堆的要求，则采用相同的方法继续往下调整 —— <strong>小元素不断“下坠”</strong></li>
+</ul>
+<p>② <strong>基于大根堆进行排序</strong>：每一趟将堆顶元素加入有序子序列中，堆顶元素与待排序序列中最后一个元素交换后，即最大元素换到末尾，之后该位置就不用改变，即移出完全二叉树(<code>len=len-1</code>)，把剩下的待排序元素序列再调整为大根堆；————<strong>“一趟处理”</strong></p>
+<p>③ 剩下最后一个元素则不需要再调整；</p>
+<ol>
+<li><strong>代码实现</strong></li>
+</ol>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">//对初始序列建立大根堆</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">BuildMaxHeap</span><span class="params">(<span class="type">int</span> A[], <span class="type">int</span> len)</span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=len/<span class="number">2</span>; i&gt;<span class="number">0</span>; i--)   <span class="comment">//从后往前调整所有非终端结点</span></span><br><span class="line">        HeadAdjust(A, i, len);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*将以k为根的子树调整为大根堆</span></span><br><span class="line"><span class="comment">从最底层的分支结点开始调整*/</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">HeadAdjust</span><span class="params">(<span class="type">int</span> A[], <span class="type">int</span> k, <span class="type">int</span> len)</span>&#123;</span><br><span class="line">    A[<span class="number">0</span>] = A[k];                      <span class="comment">//A[0]暂存子树的根结点</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">2</span>*k; i&lt;=len; i*=<span class="number">2</span>)&#123;     <span class="comment">//沿key较大的子结点向下筛选</span></span><br><span class="line">                                      <span class="comment">// i为当前所选根结点的左孩子</span></span><br><span class="line">                                      <span class="comment">//i*=2是为了判断调整后再下一层是否满足大根堆</span></span><br><span class="line">        <span class="keyword">if</span>(i&lt;len &amp;&amp; A[i]&lt;A[i+<span class="number">1</span>])      <span class="comment">//判断：当前所选根结点的左、右结点哪个更大</span></span><br><span class="line">            i++;                      <span class="comment">//取key较大的子结点的下标</span></span><br><span class="line">        <span class="keyword">if</span>(A[<span class="number">0</span>] &gt;= A[i]) </span><br><span class="line">            <span class="keyword">break</span>;                    <span class="comment">//筛选结束：i指向更大的子结点</span></span><br><span class="line">        <span class="keyword">else</span>&#123;</span><br><span class="line">            A[k] = A[i];              <span class="comment">//将A[i]调整至双亲结点上</span></span><br><span class="line">            k=i;                      <span class="comment">//修改k值，以便继续向下筛选</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    A[k] = A[<span class="number">0</span>]                       <span class="comment">//被筛选的结点的值放入最终位置</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//交换</span></span><br><span class="line"><span class="type">void</span> swap(<span class="type">int</span> &amp;a, <span class="type">int</span> &amp;b)&#123;</span><br><span class="line">    <span class="type">int</span> temp = a;</span><br><span class="line">    a = b;</span><br><span class="line">    b = temp;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//基于大根堆进行排序</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">HeapSort</span><span class="params">(<span class="type">int</span> A[], <span class="type">int</span> len)</span>&#123;</span><br><span class="line">    BuildMaxHeap(A, len);          <span class="comment">//初始建堆</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=len; i&gt;<span class="number">1</span>; i--)&#123;      <span class="comment">//n-1趟的交换和建堆过程</span></span><br><span class="line">        swap(A[i], A[<span class="number">1</span>]);          <span class="comment">//堆顶元素和堆底元素交换</span></span><br><span class="line">        HeadAdjust(A,<span class="number">1</span>,i<span class="number">-1</span>);       <span class="comment">//把剩余的待排序元素整理成堆</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="在堆中操作"><a href="#在堆中操作" class="headerlink" title="在堆中操作"></a>在堆中操作</h4><p><strong>插入</strong></p>
+<ul>
+<li>对于<strong>小根堆</strong>，新元素放到<strong>表尾</strong>，与父节点对比,若新元素比父节点更小，则将二者互换。新元素就这样一路“上升”，直到无法继续上升为止</li>
+</ul>
+<p><strong>删除</strong></p>
+<ul>
+<li>被<strong>删除的元素</strong>用<strong>堆底元素替代</strong>，然后让该元素不断“<strong>下坠</strong>”，直到无法下坠为止</li>
+</ul>
+<h4 id="acw算法实现-1"><a href="#acw算法实现-1" class="headerlink" title="acw算法实现"></a>acw算法实现</h4><p><strong>手写一个堆操作</strong></p>
+<p>size:相当于heap最后一个元素下标，size—:减少一个元素</p>
+<ol>
+<li>插入一个数 ：<code>heap[++size]=x;up(size);</code>相当于在末尾插入一个元素</li>
+<li>求集合中的最小值 ： <code>heap[1]</code></li>
+<li>删除最小值： <code>heap[1]=heap[size] ; size--; down(1)</code></li>
+<li>删除任意一个元素：  <code>heap[k]=heap[size];size--;down(k);up(k)</code>：相当最后一个元素操作</li>
+<li>修改任意一个元素 ： <code>heap[k]=x;down(k);up(k)</code></li>
+</ol>
+<p><strong>时间复杂度</strong></p>
+<p><img src="https://wjlpicture.oss-cn-beijing.aliyuncs.com/img/202205171512399.jpg" alt=""></p>
+<p><strong>代码</strong></p>
+<p><strong>根结点从1开始</strong>；下标为x的左儿子下标为<strong>2x</strong>,右儿子为<strong>2x+1</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;algorithm&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N = <span class="number">100010</span>;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> n, m;</span><br><span class="line"><span class="type">int</span> h[N], cnt;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">down</span><span class="params">(<span class="type">int</span> u)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> t = u;<span class="comment">//t存储三个结点中存在的最小的结点的下标，初始化为当前结点u</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> (u * <span class="number">2</span> &lt;= cnt &amp;&amp; h[u * <span class="number">2</span>] &lt; h[t]) t = u * <span class="number">2</span>;<span class="comment">// 左子节点存在并且小于当前结点，更新t的下标</span></span><br><span class="line">    <span class="keyword">if</span> (u * <span class="number">2</span> + <span class="number">1</span> &lt;= cnt &amp;&amp; h[u * <span class="number">2</span> + <span class="number">1</span>] &lt; h[t]) t = u * <span class="number">2</span> + <span class="number">1</span>;<span class="comment">//判断右儿子是否较小</span></span><br><span class="line">    <span class="keyword">if</span> (u != t) <span class="comment">//交换位置</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">swap</span>(h[u], h[t]);</span><br><span class="line">        <span class="built_in">down</span>(t);<span class="comment">//交换数值后，t这个结点存储原本u的值，u存储存储t的值（三个数中的最小值）。u不用调整了，但t情况不明，可能需要调整。直到它比左右子节点都小</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    cin&gt;&gt;n&gt;&gt;m;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i ++ ) <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;h[i]);</span><br><span class="line">    cnt = n;<span class="comment">//cnt为数组元素个数</span></span><br><span class="line">    <span class="comment">//把堆初始化成小根堆，从二叉树的倒数第二行开始，把数字大的下沉</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = n / <span class="number">2</span>; i; i -- ) <span class="built_in">down</span>(i);</span><br><span class="line">    <span class="keyword">while</span> (m -- )</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;%d &quot;</span>, h[<span class="number">1</span>]);<span class="comment">//输出堆顶最小值</span></span><br><span class="line">        <span class="comment">//删除最小值</span></span><br><span class="line">        h[<span class="number">1</span>] = h[cnt -- ];<span class="comment">// 将堆最后一个数放到堆顶，cnt--使得在逻辑上删除这个数</span></span><br><span class="line">        <span class="built_in">down</span>(<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">puts</span>(<span class="string">&quot;&quot;</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="归并排序和基数排序"><a href="#归并排序和基数排序" class="headerlink" title="归并排序和基数排序"></a>归并排序和基数排序</h2><h3 id="归并排序"><a href="#归并排序" class="headerlink" title="归并排序"></a>归并排序</h3><ul>
+<li><strong>归并（Merge）</strong>：把两个或多个已经有序的序列合并成一个；</li>
+<li><strong>k路归并：每选出一个元素，需对比关键字k-1</strong>次；</li>
+<li>外部排序通常采用归并排序，内部排序一般采用2路归并；</li>
+<li><strong>代码实现</strong></li>
+</ul>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">//创建辅助数组B</span></span><br><span class="line"><span class="type">int</span> *B=(<span class="type">int</span> *)<span class="built_in">malloc</span>(n*<span class="keyword">sizeof</span>(<span class="type">int</span>));</span><br><span class="line"></span><br><span class="line"><span class="comment">//A[low,...,mid],A[mid+1,...,high] 各自有序，将这两个部分归并</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">Merge</span><span class="params">(<span class="type">int</span> A[], <span class="type">int</span> low, <span class="type">int</span> mid, <span class="type">int</span> high)</span>&#123;</span><br><span class="line">    <span class="type">int</span> i,j,k;</span><br><span class="line">    <span class="keyword">for</span>(k=low; k&lt;=high; k++)</span><br><span class="line">        B[k] = A[k];           <span class="comment">//将A中所有元素复制到B中</span></span><br><span class="line">    <span class="keyword">for</span>(i=low, j=mid+<span class="number">1</span>, k=i; i&lt;=mid &amp;&amp; j&lt;= high; k++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(B[i]&lt;=B[j])          <span class="comment">//为保证稳定性两个元素相等时，优先使用靠前的那个</span></span><br><span class="line">            A[k]=B[i++];        <span class="comment">//将较小值复制到A中</span></span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            A[k]=B[j++];</span><br><span class="line">    &#125;<span class="comment">//for</span></span><br><span class="line">     </span><br><span class="line">    <span class="comment">//没有归并完的部分复制到尾部，while只会执行一个 </span></span><br><span class="line">    <span class="keyword">while</span>(i&lt;=mid)  A[k++]=B[i++];     <span class="comment">//若第一个表未检测完，复制</span></span><br><span class="line">    <span class="keyword">while</span>(j&lt;=high) A[k++]=B[j++];     <span class="comment">//若第二个表未检测完，复制</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//递归操作</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">MergeSort</span><span class="params">(<span class="type">int</span> A[], <span class="type">int</span> low, <span class="type">int</span> high)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(low&lt;high)&#123;</span><br><span class="line">        <span class="type">int</span> mid = (low+high)/<span class="number">2</span>;    <span class="comment">//从中间划分</span></span><br><span class="line">        MergeSort(A, low, mid);    <span class="comment">//对左半部分归并排序</span></span><br><span class="line">        MergeSort(A, mid+<span class="number">1</span>, high); <span class="comment">//对右半部分归并排序</span></span><br><span class="line">        Merge(A,low,mid,high);     <span class="comment">//归并</span></span><br><span class="line">    &#125;<span class="keyword">if</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>算法效率分析<ul>
+<li>归并排序的比较次数与序列的初始状态无关；</li>
+<li>2路归并的“归并树”——倒立的二叉树，树高<code>h</code>，归并排序趟数<code>m = h-1</code>，第<code>h</code>层最多<code>2^(h-1)</code>个结点，则满足<code>n ≤ 2^(h-1)</code>，即<code>h-1 = ⌈log₂n⌉</code>; <strong>结论: n个元素进行2路归并排序，归并趟数 m = ⌈log₂n⌉</strong></li>
+<li>每趟归并时间复杂度为<code>O(n)</code>, 算法<strong>总时间复杂度</strong>为<code>O(nlog₂n)</code>;</li>
+<li><strong>空间复杂度</strong>为<code>O(n)</code>; (归并排序算法可视为本章占用辅助空间最多的排序算法)</li>
+<li>稳定性：归并排序是<strong>稳定</strong>的</li>
+<li>对于<code>N</code>个元素进行<code>k</code>路归并排序，排序的趟数<code>m</code>满足 <code>k^m = N, m = ⌈logkN⌉</code></li>
+</ul>
+</li>
+</ul>
+<h4 id="acw算法实现-2"><a href="#acw算法实现-2" class="headerlink" title="acw算法实现"></a>acw算法实现</h4><p><strong>思想</strong></p>
+<ol>
+<li>确定分界点：mid=(l+r)/2</li>
+<li>归并排序left,right</li>
+<li>归并（合二为一）—难点</li>
+</ol>
+<p><a href="https://blog.csdn.net/u010711495/article/details/116891262?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522164622666416780255279046%2522%252C%2522scm%2522%253A%252220140713.130102334.pc%255Fall.%2522%257D&amp;request_id=164622666416780255279046&amp;biz_id=0&amp;utm_medium=distribute.pc_search_result.none-task-blog-2~all~first_rank_ecpm_v1~rank_v31_ecpm-7-116891262.first_rank_v2_pc_rank_v29&amp;utm_term=%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F%E5%9B%BE%E8%A7%A3&amp;spm=1018.2226.3001.4187">图解过程</a></p>
+<p>图解</p>
+<p><img src="https://wjlpicture.oss-cn-beijing.aliyuncs.com/img/202203022114282.png" alt=""></p>
+<p><strong>稳定性好</strong></p>
+<ul>
+<li>在排序对比时，遇到相同位置的数字，不发生交换，就比较稳定；可能发生交换不稳定</li>
+</ul>
+<p><img src="https://wjlpicture.oss-cn-beijing.aliyuncs.com/img/202205162334188.gif" style="zoom:200%;" /></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">merge_sort</span><span class="params">(<span class="type">int</span> q[], <span class="type">int</span> l, <span class="type">int</span> r)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (l &gt;= r) <span class="keyword">return</span>;<span class="comment">//回归条件</span></span><br><span class="line">    <span class="type">int</span> mid = l + r &gt;&gt; <span class="number">1</span>;<span class="comment">//取中间值，</span></span><br><span class="line">    <span class="built_in">merge_sort</span>(q, l, mid);<span class="comment">//左端递归排序</span></span><br><span class="line">    <span class="built_in">merge_sort</span>(q, mid + <span class="number">1</span>, r);<span class="comment">//右端递归排序</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">//归并合一，两个有序序列合成一个有序序列</span></span><br><span class="line">    <span class="type">int</span> k = <span class="number">0</span>, i = l, j = mid + <span class="number">1</span>;<span class="comment">//i指向左半边,j指向右半边</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">//两边都没有循环完，判断大小</span></span><br><span class="line">    <span class="keyword">while</span> (i &lt;= mid &amp;&amp; j &lt;= r)</span><br><span class="line">        <span class="keyword">if</span> (q[i] &lt;= q[j]) tmp[k ++ ] = q[i ++ ];</span><br><span class="line">        <span class="keyword">else</span> tmp[k ++ ] = q[j ++ ];</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//左右其中一边没有循环完的接到序列后面</span></span><br><span class="line">    <span class="keyword">while</span> (i &lt;= mid) tmp[k ++ ] = q[i ++ ];</span><br><span class="line">    <span class="keyword">while</span> (j &lt;= r) tmp[k ++ ] = q[j ++ ];</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//将tem付给q数组</span></span><br><span class="line">    <span class="keyword">for</span> (i = l, j = <span class="number">0</span>; i &lt;= r; i ++, j ++ ) q[i] = tmp[j];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="基数排序"><a href="#基数排序" class="headerlink" title="基数排序"></a>基数排序</h3><ol>
+<li><strong>算法效率分析</strong></li>
+</ol>
+<ul>
+<li>空间效率：<code>O(r)</code>, 其中r为基数，需要的辅助空间(队列)为r；</li>
+<li>时间效率：一共进行<code>d</code>趟分配收集，一趟分配需要<code>O(n)</code>, 一趟收集需要<code>O(r)</code>, 时间复杂度为 <strong><code>O[d(n+r)]</code></strong>，且<strong>与序列的初始状态无关</strong></li>
+<li>稳定性：稳定！</li>
+</ul>
+<ol>
+<li>基数排序擅长解决的问题</li>
+</ol>
+<p>①数据元素的关键字可以方便地拆分为d组，且d较小；<br>②每组关键字的取值范围不大，即r较小；<br>③数据元素个数n较大；</p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><h4 id="稳定性"><a href="#稳定性" class="headerlink" title="稳定性"></a><strong>稳定性</strong></h4><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>稳定</th>
+<th>不稳定</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>直接插入排序</td>
+<td>简单选择排序</td>
+</tr>
+<tr>
+<td>冒泡排序</td>
+<td>希尔排序</td>
+</tr>
+<tr>
+<td>归并排序</td>
+<td>快速排序</td>
+</tr>
+<tr>
+<td>基数排序</td>
+<td>堆排序</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h4 id="时间复杂度"><a href="#时间复杂度" class="headerlink" title="时间复杂度"></a><strong>时间复杂度</strong></h4><ul>
+<li>平均情况下：<strong>快速排序、希尔排序、归并排序、堆排序</strong> 均为 O(nlog2n)； <strong>基数排序</strong>为O(d(n+r))； <strong>其余</strong>全是O(n²);</li>
+<li>最坏情况下：<strong>快速排序、希尔排序</strong> 为O(n²)，其余与平均情况一样；</li>
+<li>最好情况下：<strong>直接插入排序、冒泡排序、希尔排序</strong> 为 O(n)，其余与平均情况一样；</li>
+</ul>
+<h4 id="空间复杂度"><a href="#空间复杂度" class="headerlink" title="空间复杂度"></a><strong>空间复杂度</strong></h4><ul>
+<li><strong>快速排序</strong> ：平均 —— O(log2n)；最坏 —— O(n);</li>
+<li><strong>2路归并排序</strong>：O(n)；</li>
+<li><strong>基数排序</strong>：O®;</li>
+<li>其余都是 O(1);</li>
+<li>就辅助空间而言：堆排序&lt;快速排序&lt;归并排序</li>
+</ul>
+<h4 id="过程特征"><a href="#过程特征" class="headerlink" title="过程特征"></a><strong>过程特征</strong></h4><ul>
+<li>经过一趟排序，能够保证一个元素到达最终位置： 交换类——<strong>冒泡、快速</strong>；选择类———<strong>简单选择、堆</strong>；</li>
+<li>排序方法的<strong>元素比较次数</strong>与原始序列<strong>无关</strong>：<strong>简单选择、折半插入</strong></li>
+<li>排序方法的<strong>排序趟数</strong>与原始序列<strong>有关</strong>：<strong>交换类——冒泡、快速</strong></li>
+<li>排序方法中，<strong>元素的移动次数</strong>与原始序列<strong>无关</strong>：<strong>基数排序</strong></li>
+<li>初始序列有序时，冒泡排序比较<code>n-1</code>次，不需要移动元素；</li>
+<li><strong>希尔排序</strong>和<strong>堆排序</strong>利用顺序存储的随机访问特征，注意链式存储不支持这种性质；</li>
+</ul>
+<h4 id="排序算法的选择"><a href="#排序算法的选择" class="headerlink" title="排序算法的选择"></a><strong>排序算法的选择</strong></h4><ul>
+<li>若<strong>n较小</strong>，可采用时间复杂度为<strong>O(n²)</strong>的排序方法：<strong>直接插入排序、简单选择排序</strong>，该情况下，若记录本身信息量较大，用简单选择排序；</li>
+<li>若<strong>n较大</strong>，应采用时间复杂度为<strong>O(nlog2n)</strong>的排序方法：<strong>快速排序、归并排序、堆排序</strong></li>
+<li><strong>快速排序</strong>——目前基于比较的内部排序方法中<strong>最好</strong>的方法，当关键字随机分布时，平均实际最短；</li>
+<li>若<strong>n很大</strong>，记录的关键字位数较少且可分解，选择<strong>基数排序</strong></li>
+<li>若记录本上信息量较大，可用链表作为存储结构；</li>
+<li>若要求排序稳定且时间复杂度为O(nlog2n)，则选择<strong>归并排序</strong>，通常和直接插入排序结合使用：先利用直接插入排序求得较长的有序子文件，再两两归并，仍是稳定；</li>
+<li>基数排序不能对<code>float</code>和<code>double</code>类型的实数进行排序；</li>
 </ul>
 ]]></content>
       <categories>
@@ -8964,6 +9107,46 @@ else
       </categories>
       <tags>
         <tag>数据结构</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>2.搜索与图论</title>
+    <url>/blot.github.io/2022/06/03/%E6%90%9C%E7%B4%A2%E4%B8%8E%E5%9B%BE%E8%AE%BA/</url>
+    <content><![CDATA[<h1 id="搜索与图论"><a href="#搜索与图论" class="headerlink" title="搜索与图论"></a>搜索与图论</h1><h1 id="DFS"><a href="#DFS" class="headerlink" title="DFS"></a>DFS</h1><p>全称：<strong>深度优先搜索算法</strong></p>
+<ol>
+<li>dfs 最重要的是<strong>搜索顺序</strong>。用什么顺序遍历所有方案。</li>
+<li>递归加回溯</li>
+</ol>
+<h2 id="全排列"><a href="#全排列" class="headerlink" title="全排列"></a>全排列</h2><p>对于全排列问题，以 n = 3 为例，可以这样进行搜索</p>
+<p><strong>dfs递归搜索树</strong></p>
+<p><img src="https://wjlpicture.oss-cn-beijing.aliyuncs.com/img/202205191543338.png" alt=""></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N=<span class="number">10</span>;</span><br><span class="line"><span class="type">int</span> n;</span><br><span class="line"><span class="type">int</span> path[N];<span class="comment">//保存序列</span></span><br><span class="line"><span class="type">bool</span> st[N];<span class="comment">//数字是否被用过</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">dfs</span><span class="params">(<span class="type">int</span> u)</span></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(u==n)&#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;n;i++) <span class="built_in">printf</span>(<span class="string">&quot;%d &quot;</span>,path[i]);</span><br><span class="line">		<span class="built_in">puts</span>(<span class="string">&quot;&quot;</span>);</span><br><span class="line">		<span class="keyword">return</span> ;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">		<span class="keyword">if</span>(!st[i])&#123;   <span class="comment">//如果数字 i 没有被用过</span></span><br><span class="line">			path[u]=i;<span class="comment">//放入空位</span></span><br><span class="line">			st[i]=<span class="literal">true</span>;<span class="comment">//修改数字状态</span></span><br><span class="line">			<span class="built_in">dfs</span>(u+<span class="number">1</span>);<span class="comment">//填下一个位</span></span><br><span class="line">			st[i]=<span class="literal">false</span>;<span class="comment">//回溯，取出i</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	cin&gt;&gt;n;</span><br><span class="line">	<span class="built_in">dfs</span>(<span class="number">0</span>);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>手动模拟</p>
+<p><img src="https://wjlpicture.oss-cn-beijing.aliyuncs.com/img/202205191545074.png" alt=""></p>
+<h2 id="n皇后问题"><a href="#n皇后问题" class="headerlink" title="n皇后问题"></a>n<a href="https://www.acwing.com/problem/content/845/">皇后问题</a></h2><h3 id="第一种搜索方法"><a href="#第一种搜索方法" class="headerlink" title="第一种搜索方法"></a>第一种搜索方法</h3><ul>
+<li>每一行必定有一个皇后，对行进行深度遍历。</li>
+<li>对于第 r 行的第 i 个位置，判断每个点是否可以放皇后，如果可以，则放皇后，然后处理 r + 1 行。直到 r = n，程序指行完毕</li>
+</ul>
+<p><strong>对角线下标问题</strong></p>
+<ol>
+<li>反对角线，<code>y=-x+c,c=x+y,c</code>这里代表截距</li>
+<li>正对角线<code>y=x+c，c=y-x</code>,所以这里的c可能是负的，但作为数组下标，不能是负的，所以我们把正对角线加上一个偏移量，<code>c=y-x+n</code>是没影响的，因为截距最大是n，所以我加了n，也可以加比n大的任何数，x就是下面的h也就是行，y就是下面的l 也就是列</li>
+<li>理解为<code>xoy</code>平面方程<code>y=kx+b</code>方程，截距问题</li>
+</ol>
+<p><strong>时间复杂度</strong>：O(n!)</p>
+<p><img src="https://wjlpicture.oss-cn-beijing.aliyuncs.com/img/202205211614109.jpg" alt=""></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N = <span class="number">20</span>;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> n;</span><br><span class="line"><span class="type">char</span> g[N][N];<span class="comment">//存储棋盘</span></span><br><span class="line"><span class="type">bool</span> col[N], dg[N], udg[N];<span class="comment">//点对应列和两个斜线是否有皇后，dg为对角线,udg为反对角线</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//u相当行</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">dfs</span><span class="params">(<span class="type">int</span> u)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (u == n)<span class="comment">//放满了棋盘，输出棋盘</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; i ++ ) <span class="built_in">puts</span>(g[i]);</span><br><span class="line">        <span class="built_in">puts</span>(<span class="string">&quot;&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//最开始的循环：就是第一行第一个放皇后，递归输出所有满足条件的方案，回溯，下一步就是在第一行第二列放皇后，递归输出所有方案....</span></span><br><span class="line">    <span class="comment">//u行,i列</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; i ++ )</span><br><span class="line">        <span class="keyword">if</span> (!col[i] &amp;&amp; !dg[u + i] &amp;&amp; !udg[n - u + i])<span class="comment">//不冲突，放皇后</span></span><br><span class="line">        &#123;</span><br><span class="line">            g[u][i] = <span class="string">&#x27;Q&#x27;</span>;</span><br><span class="line">            col[i] = dg[u + i] = udg[n - u + i] = <span class="literal">true</span>;<span class="comment">//对应的 列， 斜线 状态改变</span></span><br><span class="line">            <span class="built_in">dfs</span>(u + <span class="number">1</span>);<span class="comment">//递归下一行</span></span><br><span class="line">            col[i] = dg[u + i] = udg[n - u + i] = <span class="literal">false</span>;<span class="comment">//恢复现场</span></span><br><span class="line">            g[u][i] = <span class="string">&#x27;.&#x27;</span>;</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    cin &gt;&gt; n;</span><br><span class="line">    <span class="comment">//初始化,全是空格</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; i ++ )</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">0</span>; j &lt; n; j ++ )</span><br><span class="line">            g[i][j] = <span class="string">&#x27;.&#x27;</span>;</span><br><span class="line">    <span class="built_in">dfs</span>(<span class="number">0</span>);<span class="comment">//从第0行递归</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="第二种搜索方法"><a href="#第二种搜索方法" class="headerlink" title="第二种搜索方法"></a>第二种搜索方法</h3><ol>
+<li>（DFS按每个元素枚举）时间复杂度O(2的n^2^)</li>
+<li>时间复杂度分析：每个位置都有两种情况，总共有 n^2^ 个位置</li>
+</ol>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 不同搜索顺序 时间复杂度不同  所以搜索顺序很重要！</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N = <span class="number">10</span>;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> n;</span><br><span class="line"><span class="type">bool</span> row[N], col[N], dg[N * <span class="number">2</span>], udg[N * <span class="number">2</span>];<span class="comment">// 因为是一个个搜索，所以加了row</span></span><br><span class="line"><span class="type">char</span> g[N][N];</span><br><span class="line"></span><br><span class="line"><span class="comment">// s表示已经放上去的皇后个数,x行，n列</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">dfs</span><span class="params">(<span class="type">int</span> x, <span class="type">int</span> y, <span class="type">int</span> s)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">// 处理超出边界的情况</span></span><br><span class="line">    <span class="keyword">if</span> (s &gt; n) <span class="keyword">return</span>;</span><br><span class="line">    <span class="keyword">if</span> (y == n) y = <span class="number">0</span>, x ++ ;<span class="comment">//枚举下一行</span></span><br><span class="line">    <span class="keyword">if</span> (x == n)<span class="comment">// x==n说明已经枚举完n^2个位置</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (s == n)<span class="comment">// s==n说明成功放上去了n个皇后</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; i ++ ) <span class="built_in">puts</span>(g[i]);</span><br><span class="line">            <span class="built_in">puts</span>(<span class="string">&quot;&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//两种情况一直递归</span></span><br><span class="line">    <span class="comment">// 分支1：不放皇后</span></span><br><span class="line">    <span class="built_in">dfs</span>(x, y + <span class="number">1</span>, s);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//分支2：放皇后</span></span><br><span class="line">    <span class="keyword">if</span> (!row[x] &amp;&amp; !col[y] &amp;&amp; !dg[x + y] &amp;&amp; !udg[x - y + n])</span><br><span class="line">    &#123;</span><br><span class="line">        row[x] = col[y] = dg[x + y] = udg[x - y + n] = <span class="literal">true</span>;</span><br><span class="line">        g[x][y] = <span class="string">&#x27;Q&#x27;</span>;</span><br><span class="line">        <span class="built_in">dfs</span>(x, y + <span class="number">1</span>, s + <span class="number">1</span>);</span><br><span class="line">        g[x][y] = <span class="string">&#x27;.&#x27;</span>;</span><br><span class="line">        row[x] = col[y] = dg[x + y] = udg[x - y + n] = <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    cin &gt;&gt; n;</span><br><span class="line">    <span class="comment">//初始化,全是空格</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; i ++ )</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">0</span>; j &lt; n; j ++ )</span><br><span class="line">            g[i][j] = <span class="string">&#x27;.&#x27;</span>;</span><br><span class="line">    <span class="built_in">dfs</span>(<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>acwing基础算法</category>
+      </categories>
+      <tags>
+        <tag>acwing</tag>
       </tags>
   </entry>
   <entry>
